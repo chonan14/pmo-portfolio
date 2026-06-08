@@ -28,7 +28,7 @@ export const PROFILE = {
 export const AVAILABILITY = {
   days: '週3〜4日',
   location: 'フルリモート優先',
-  start: '2026年5月以降 受入可',
+  start: '即日可（応相談）',
 } as const;
 
 export type NavItem = {
