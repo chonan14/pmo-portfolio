@@ -1,0 +1,11 @@
+title: 議席のすすめ（地方議員向けポータル）
+slug: giseki-no-susume
+status: Public
+displayOrder: 40
+type:
+  - Website
+category: 情報設計
+description: 地方議員候補・新人議員向けの超党派・無料の情報ポータル。「出馬の意思決定」「公示前」「当選後100日」の3つの空白地帯を埋める情報設計。Astro + MDX で構築。
+techStack:
+  - Astro
+  - MDX

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.status === 'Public')
+  .sort((a, b) => b.data.displayOrder - a.data.displayOrder);
+---
+
+<BaseLayout
+  title="実績・ケーススタディ"
+  description="統括PMO・戦略PMO・クライシスマネジメントの実績一覧。課題→介入→成果の3段で、国家インフラ規模から危機対応・官民連携までのプロジェクトを掲載。"
+>
+  <section class="page-head">
+    <div class="container-wide">
+      <p class="section-eyebrow">Case Studies</p>
+      <h1 class="page-head__title">実績・ケーススタディ</h1>
+      <p class="page-head__lead">
+        各案件を「課題 → 介入（実施したこと） → 成果」の3段で整理しています。通信・金融・公共（自治体DX）から、危機対応・官民連携まで。
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container-wide">
+      <div class="cards">
+        {projects.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <div class="container-wide cta-wrap">
+    <CTASection />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-head {
+    background: linear-gradient(180deg, var(--color-primary-50), var(--color-paper));
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .page-head__title {
+    margin: 1rem 0 0;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .page-head__lead {
+    margin: 1.25rem 0 0;
+    max-width: 44rem;
+    color: var(--color-ink-soft);
+    line-height: 1.9;
+  }
+
+  .page-section {
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .cta-wrap {
+    margin-bottom: clamp(3rem, 8vw, 6rem);
+  }
+
+  @media (max-width: 960px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

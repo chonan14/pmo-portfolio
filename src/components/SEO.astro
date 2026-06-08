@@ -1,0 +1,59 @@
+---
+import { SITE } from '@/consts';
+import { buildPersonJsonLd, buildWebSiteJsonLd } from '@/lib/seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  canonical?: string;
+  noindex?: boolean;
+  jsonLd?: unknown[];
+}
+
+const {
+  title,
+  description = SITE.description,
+  image = SITE.ogImage,
+  type = 'website',
+  canonical,
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const pageTitle = title ? SITE.titleTemplate.replace('%s', title) : SITE.defaultTitle;
+
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
+const ogImageUrl = image.startsWith('http') ? image : new URL(image, SITE.url).toString();
+
+const baseJsonLd = type === 'website' ? [buildWebSiteJsonLd(), buildPersonJsonLd()] : [];
+const allJsonLd = [...baseJsonLd, ...jsonLd];
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<meta property="og:type" content={type} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content={SITE.locale} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<meta name="theme-color" content={SITE.themeColor} />
+
+{
+  allJsonLd.map((data) => (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+  ))
+}

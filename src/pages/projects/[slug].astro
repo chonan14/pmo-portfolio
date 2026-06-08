@@ -1,0 +1,84 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CaseStudy from '@/components/CaseStudy.astro';
+import CTASection from '@/components/CTASection.astro';
+import { getCollection } from 'astro:content';
+import { buildBreadcrumbJsonLd } from '@/lib/seo';
+import { SITE } from '@/consts';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects')).filter((p) => p.data.status === 'Public');
+  return projects.map((project) => ({
+    params: { slug: project.data.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const d = project.data;
+
+const breadcrumb = buildBreadcrumbJsonLd([
+  { name: 'ホーム', url: SITE.url },
+  { name: '実績', url: `${SITE.url}/projects/` },
+  { name: d.title, url: `${SITE.url}/projects/${d.slug}/` },
+]);
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.summary}
+  type="article"
+  jsonLd={[breadcrumb]}
+>
+  <div class="container-narrow detail">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a>
+      <span aria-hidden="true">/</span>
+      <a href="/projects/">実績</a>
+    </nav>
+
+    <CaseStudy project={project} />
+
+    <div class="detail__back">
+      <a href="/projects/" class="btn-ghost">← 実績一覧へ戻る</a>
+    </div>
+  </div>
+
+  <div class="container-wide cta-wrap">
+    <CTASection heading="同様の課題、ありませんか？" />
+  </div>
+</BaseLayout>
+
+<style>
+  .detail {
+    padding-block: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--color-ink-soft);
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .detail__back {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .cta-wrap {
+    margin-bottom: clamp(3rem, 8vw, 6rem);
+  }
+</style>

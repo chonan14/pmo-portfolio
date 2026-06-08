@@ -1,0 +1,12 @@
+title: KOHO PoliTech Suite（政治家向けMicroSaaSポータル）
+slug: koho-politech-suite
+status: Public
+displayOrder: 60
+type:
+  - Website
+  - Tool
+category: 業務効率化
+description: 政治家向けのMicroSaaS 10種をまとめたポータル。APIキー不要の「プロンプトdeep-link」方式で、無料7種・有料3種を提供。企画・情報設計・実装を担当。
+techStack:
+  - Astro
+  - Cloudflare Pages

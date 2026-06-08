@@ -1,0 +1,17 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# secrets / env
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log

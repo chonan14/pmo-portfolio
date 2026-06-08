@@ -1,0 +1,175 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  title: string;
+  entries: CollectionEntry<'career'>[];
+}
+
+const { title, entries } = Astro.props;
+
+function periodLabel(d: CollectionEntry<'career'>['data']): string {
+  if (d.current) return `${d.startDate}〜現在`;
+  if (d.endDate && d.endDate !== d.startDate) return `${d.startDate}〜${d.endDate}`;
+  return d.startDate;
+}
+---
+
+<section class="ctl">
+  <h2 class="ctl__title">{title}</h2>
+  <ol class="ctl__list">
+    {
+      entries.map((entry) => {
+        const d = entry.data;
+        return (
+          <li class="ctl__item">
+            <div class="ctl__period">{periodLabel(d)}</div>
+            <div class="ctl__content">
+              <p class="ctl__heading">
+                {d.organization && <span class="ctl__org">{d.organization}</span>}
+                <span class="ctl__role">{d.position ?? d.title}</span>
+              </p>
+              {
+                d.responsibilities.length > 0 && (
+                  <ul class="ctl__bullets">
+                    {d.responsibilities.map((r) => <li>{r}</li>)}
+                  </ul>
+                )
+              }
+              {
+                d.keyAchievements.length > 0 && (
+                  <ul class="ctl__bullets ctl__bullets--achieve">
+                    {d.keyAchievements.map((a) => <li>{a}</li>)}
+                  </ul>
+                )
+              }
+            </div>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>
+
+<style>
+  .ctl {
+    margin-bottom: 3.5rem;
+  }
+
+  .ctl__title {
+    font-size: 1.35rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-primary-100);
+    margin: 0 0 2rem;
+  }
+
+  .ctl__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .ctl__item {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1.5rem;
+  }
+
+  .ctl__period {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    letter-spacing: 0.02em;
+    padding-top: 0.1rem;
+  }
+
+  .ctl__content {
+    border-left: 2px solid var(--color-primary-100);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .ctl__content::before {
+    content: '';
+    position: absolute;
+    left: -0.45rem;
+    top: 0.4rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 3px solid var(--color-paper);
+    box-shadow: 0 0 0 2px var(--color-primary-100);
+  }
+
+  .ctl__heading {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .ctl__org {
+    font-size: 0.8rem;
+    color: var(--color-ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  .ctl__role {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  .ctl__bullets {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .ctl__bullets li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+  }
+
+  .ctl__bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: var(--color-primary-300);
+  }
+
+  .ctl__bullets--achieve li {
+    color: var(--color-ink);
+  }
+
+  .ctl__bullets--achieve li::before {
+    background: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    .ctl__item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .ctl__content {
+      border-left: none;
+      padding-left: 1.25rem;
+    }
+    .ctl__content::before {
+      left: -0.4rem;
+    }
+  }
+</style>

@@ -1,0 +1,164 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CTASection from '@/components/CTASection.astro';
+import { PROFILE } from '@/consts';
+
+const credo = [
+  {
+    eyebrow: '信条',
+    title: '目的からの逸脱を許さないファシリテーション',
+    body: '大規模プロジェクトで陥りがちな「個別部署による部分最適化」や「影響力の強いステークホルダーの属人的要望」に一切迎合せず、会議のたびにプロジェクトのGOALを全体に提示し、毅然とした態度で臨みます。',
+  },
+  {
+    eyebrow: '強み',
+    title: '経営・政策的視点と現場の運用構築力の結節',
+    body: '「経営・政策的視点」と「現場の運用構築力」を高い次元で結びつけ、数兆円規模のインフラ導入から重大インシデントの火消し・金融水準の厳格な移行プロジェクトまで、実現可能な戦略を立案し定着まで導いてきました。',
+  },
+  {
+    eyebrow: '提供価値',
+    title: 'CxOの右腕として即戦力で機能',
+    body: 'IPA委員・デジタル庁委員として制度・法規制を読む力を持ち、高難度環境においてもCxOの右腕として、事業成長に直結するPMO業務を即戦力で提供します。',
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="長南貴則について。CxOの右腕として機能する統括PMO。経営・政策的視点と現場の運用構築力を結節し、制度・法規制を踏まえた実行計画でプロジェクトを前進させます。"
+>
+  <section class="page-head">
+    <div class="container-narrow">
+      <p class="section-eyebrow">About</p>
+      <h1 class="page-head__title">{PROFILE.fullName}</h1>
+      <p class="page-head__role">{PROFILE.title}</p>
+      <p class="page-head__company">{PROFILE.company}</p>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container-narrow">
+      <div class="summary">
+        <h2 class="summary__title">職務要約</h2>
+        <p class="summary__text">
+          NTTドコモ（2007〜2026年・約19年）において、開発予算1兆円・体制2,000人規模のLTE全国展開をはじめ、全社横断システム導入・DX推進・新規事業開発の統括PMO／戦略PMOとして従事。その後フリーランスとして大手事業会社IT部門の管理PMOを約3年担当しました。
+        </p>
+        <p class="summary__text">
+          「単なる進捗管理者」ではなく、CxOの右腕として機能する統括PMOを強みとし、「何を決めるべきか／誰をどう動かすか／どの順番で整理すべきか」を可視化して、経営・現場・外部機関を横断しプロジェクトを前進させます。
+        </p>
+        <p class="summary__text">
+          IPA専門委員・デジタル庁デジタル推進委員として国のガイドライン策定に参画。総務省・経済産業省・自治体との協働実績を持ち、制度・法規制を踏まえた実行計画策定が差別化軸です。
+        </p>
+      </div>
+
+      <div class="credo">
+        {
+          credo.map((c) => (
+            <article class="credo__item">
+              <p class="credo__eyebrow">{c.eyebrow}</p>
+              <h3 class="credo__title">{c.title}</h3>
+              <p class="credo__body">{c.body}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="about-links">
+        <a href="/career/" class="btn-ghost">職務経歴の詳細を見る</a>
+        <a href="/projects/" class="btn-ghost">実績・ケーススタディを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-wide cta-wrap">
+    <CTASection />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-head {
+    background: linear-gradient(180deg, var(--color-primary-50), var(--color-paper));
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .page-head__title {
+    margin: 1rem 0 0;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .page-head__role {
+    margin: 0.75rem 0 0;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  .page-head__company {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+  }
+
+  .page-section {
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .summary__title {
+    font-size: 1.3rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-primary-100);
+    margin: 0 0 1.5rem;
+  }
+
+  .summary__text {
+    margin: 0 0 1.25rem;
+    line-height: 2;
+    color: var(--color-ink);
+  }
+
+  .credo {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .credo__item {
+    padding: 1.75rem;
+    background: var(--color-paper-soft);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  }
+
+  .credo__eyebrow {
+    margin: 0;
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: white;
+    background: var(--color-primary);
+    padding: 0.2rem 0.7rem;
+    border-radius: 9999px;
+  }
+
+  .credo__title {
+    margin: 0.75rem 0 0;
+    font-size: 1.15rem;
+  }
+
+  .credo__body {
+    margin: 0.75rem 0 0;
+    line-height: 1.95;
+    color: var(--color-ink-soft);
+  }
+
+  .about-links {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-wrap {
+    margin-bottom: clamp(3rem, 8vw, 6rem);
+  }
+</style>

@@ -1,0 +1,167 @@
+---
+import { PROFILE, FOOTER_LINKS, AVAILABILITY, SITE } from '@/consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container-wide site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{PROFILE.fullName}</p>
+      <p class="site-footer__meta">{PROFILE.title}</p>
+      <p class="site-footer__company">{PROFILE.company}</p>
+
+      <dl class="site-footer__availability">
+        <div>
+          <dt>稼働</dt>
+          <dd>{AVAILABILITY.days} ／ {AVAILABILITY.location}</dd>
+        </div>
+        <div>
+          <dt>受入</dt>
+          <dd>{AVAILABILITY.start}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="サイトマップ">
+      <p class="site-footer__nav-title">サイトマップ</p>
+      <ul>
+        {FOOTER_LINKS.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="site-footer__cta">
+      <p class="site-footer__nav-title">お問い合わせ</p>
+      <p class="site-footer__cta-text">
+        PMO支援のご相談・お見積りは、フォームよりお気軽にご連絡ください。初回相談は無料です。
+      </p>
+      <a href="/contact/" class="btn-primary site-footer__cta-btn">相談する</a>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container-wide site-footer__bottom-inner">
+      <small>&copy; {year} {SITE.name}. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 6rem;
+    background: var(--color-primary-900);
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1.4fr;
+    gap: 2.5rem;
+    padding-block: 3.5rem;
+  }
+
+  .site-footer__name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+  }
+
+  .site-footer__meta {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.06em;
+  }
+
+  .site-footer__company {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .site-footer__availability {
+    margin: 1.5rem 0 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .site-footer__availability div {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .site-footer__availability dt {
+    flex-shrink: 0;
+    width: 2.5rem;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .site-footer__availability dd {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .site-footer__nav-title {
+    margin: 0 0 1rem 0;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .site-footer__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .site-footer__nav a {
+    color: rgba(255, 255, 255, 0.86);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+  }
+
+  .site-footer__nav a:hover {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .site-footer__cta-text {
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0 0 1.25rem;
+  }
+
+  .site-footer__cta-btn {
+    box-shadow: none;
+  }
+
+  .site-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .site-footer__bottom-inner {
+    padding-block: 1.25rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 860px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-block: 3rem;
+    }
+    .site-footer {
+      margin-top: 4rem;
+    }
+  }
+</style>
