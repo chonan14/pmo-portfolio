@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { PROFILE, SITE, SKILL_GROUPS, TOOLS } from '@/consts';
+import { PROFILE, SITE, SKILL_GROUPS, TOOLS, SEEKING } from '@/consts';
 import QRCode from 'qrcode';
 
 const projects = (await getCollection('projects'))
@@ -20,6 +20,7 @@ const period = (d: { startDate: string; endDate?: string; current?: boolean }) =
 const pPeriod = (s: string, e?: string) => (e ? `${s}〜${e}` : s);
 
 const qrSvg = await QRCode.toString(SITE.url, { type: 'svg', margin: 0, width: 92 });
+const updated = '2026年6月';
 ---
 
 <!doctype html>
@@ -100,6 +101,25 @@ const qrSvg = await QRCode.toString(SITE.url, { type: 'svg', margin: 0, width: 9
         font-size: 7.5px;
         color: #586374;
         letter-spacing: 0.01em;
+      }
+      .rh__date {
+        text-align: right;
+        font-size: 8px;
+        color: #586374;
+        margin: 4px 0 0;
+      }
+      .rh__seek {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 16px;
+        margin: 6px 0 0;
+        padding: 6px 0 0;
+        border-top: 1px solid #e4e8ee;
+        font-size: 9px;
+      }
+      .rh__seek b {
+        color: #a87d3f;
+        margin-right: 4px;
       }
       h2.sec {
         font-size: 12px;
@@ -252,6 +272,11 @@ const qrSvg = await QRCode.toString(SITE.url, { type: 'svg', margin: 0, width: 9
           <p class="rh__url">{SITE.url}</p>
         </div>
       </header>
+
+      <p class="rh__date">{updated}現在</p>
+      <div class="rh__seek">
+        {SEEKING.map((s) => (<span><b>{s.label}</b>{s.value}</span>))}
+      </div>
 
       <h2 class="sec">職務要約</h2>
       <p>

@@ -45,8 +45,31 @@ export const PHILOSOPHY =
 export const SEEKING: Array<{ label: string; value: string }> = [
   { label: '形態', value: '業務委託' },
   { label: '領域', value: 'PMO ／ 通信・行政・金融' },
-  { label: '稼働', value: 'フルリモート ／ 週5日以下' },
+  { label: '稼働', value: 'フルリモート ／ 週3〜5日（応相談）' },
+  { label: '開始', value: '即日可（応相談）' },
+  { label: '単価', value: '応相談' },
   { label: '役割', value: '経営層とPMを支える統括PMO' },
+];
+
+export const HIGHLIGHTS: readonly string[] = [
+  'PMO実務 約10年（統括／戦略／リード／管理）',
+  '最大案件：開発予算1兆円・体制2,000人・期間18ヶ月（LTE全国展開）',
+  '通信・金融・公共（自治体DX）／ 危機対応・官民連携・0→1新概念導入',
+  'IPA専門委員・デジタル庁デジタル推進委員 ／ 政策創造 修士',
+  '即戦力・フルリモート・即日可',
+];
+
+export const METHODS: readonly string[] = [
+  'WBS / スケジュール管理',
+  'EVM（出来高管理）',
+  '進捗・課題・リスク管理',
+  '変更管理 / スコープ統制',
+  'RACI / 体制設計',
+  'ステアリングコミッティ運営',
+  'エスカレーション基準設計',
+  'マルチベンダーコントロール',
+  'RFP策定 / 要件定義',
+  'CxO向けレポーティング',
 ];
 
 export type NavItem = {

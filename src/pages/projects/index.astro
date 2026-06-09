@@ -24,6 +24,33 @@ const projects = (await getCollection('projects'))
 
   <section class="page-section">
     <div class="container-wide">
+      <div class="ptable-wrap">
+        <h2 class="ptable-title">案件一覧</h2>
+        <table class="ptable">
+          <thead>
+            <tr><th>案件</th><th>業界・領域</th><th>役割</th><th>期間</th></tr>
+          </thead>
+          <tbody>
+            {
+              projects.map((p) => (
+                <tr>
+                  <td class="ptable__name">
+                    <a href={`/projects/${p.data.slug}/`}>{p.data.title}</a>
+                  </td>
+                  <td>{p.data.industry.join('・')}</td>
+                  <td>{p.data.role}</td>
+                  <td class="ptable__period">
+                    {p.data.durationEnd
+                      ? `${p.data.durationStart}〜${p.data.durationEnd}`
+                      : p.data.durationStart}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
       <div class="cards">
         {projects.map((p) => <ProjectCard project={p} />)}
       </div>
@@ -52,6 +79,57 @@ const projects = (await getCollection('projects'))
 
   .page-section {
     padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .ptable-wrap {
+    margin-bottom: 3rem;
+    overflow-x: auto;
+  }
+
+  .ptable-title {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+  }
+
+  .ptable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .ptable th,
+  .ptable td {
+    text-align: left;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--color-rule);
+    vertical-align: top;
+  }
+
+  .ptable thead th {
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    border-bottom: 2px solid var(--color-primary-100);
+    white-space: nowrap;
+  }
+
+  .ptable__name a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .ptable__name a:hover {
+    text-decoration: underline;
+  }
+
+  .ptable__period {
+    white-space: nowrap;
+    color: var(--color-ink-soft);
+  }
+
+  .ptable tbody tr:hover {
+    background: var(--color-paper-soft);
   }
 
   .cards {

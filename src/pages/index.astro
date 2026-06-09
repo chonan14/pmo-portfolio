@@ -6,7 +6,7 @@ import Voices from '@/components/Voices.astro';
 import { Image } from 'astro:assets';
 import portrait from '@/assets/portrait.jpg';
 import { getCollection } from 'astro:content';
-import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING } from '@/consts';
+import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING, HIGHLIGHTS } from '@/consts';
 
 const projects = (await getCollection('projects')).filter((p) => p.data.status === 'Public');
 const featured = projects
@@ -27,8 +27,12 @@ const projectCount = projects.length;
         <p class="hero__title">{PROFILE.title}</p>
         <p class="hero__catch">{PROFILE.catchphrase}</p>
         <p class="hero__lead">{PROFILE.lead}</p>
+        <ul class="hero__highlights">
+          {HIGHLIGHTS.map((h) => <li>{h}</li>)}
+        </ul>
         <div class="hero__cta">
           <a href="/projects/" class="btn-primary">実績・ケーススタディを見る</a>
+          <a href="/chonan-takanori-resume.pdf" class="btn-ghost">職務経歴書 PDF</a>
           <a href="/career/" class="btn-ghost">職務経歴</a>
         </div>
       </div>
@@ -214,6 +218,35 @@ const projectCount = projects.length;
     font-size: 0.98rem;
     line-height: 2;
     color: var(--color-ink-soft);
+  }
+
+  .hero__highlights {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    max-width: 37rem;
+  }
+
+  .hero__highlights li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--color-ink);
+  }
+
+  .hero__highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0.1rem;
+    top: 0.55rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-accent);
+    border-radius: 2px;
+    transform: rotate(45deg);
   }
 
   .hero__cta {

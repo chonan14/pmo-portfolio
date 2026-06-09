@@ -33,6 +33,7 @@ import { PROFILE, NAV } from '@/consts';
           ))
         }
       </ul>
+      <a href="/chonan-takanori-resume.pdf" class="site-header__pdf">職務経歴書 PDF</a>
     </nav>
   </div>
 </header>
@@ -82,6 +83,26 @@ import { PROFILE, NAV } from '@/consts';
     display: flex;
     align-items: center;
     gap: 0.75rem;
+  }
+
+  .site-header__pdf {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.95rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: white;
+    background: var(--color-primary);
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+
+  .site-header__pdf:hover {
+    background: var(--color-primary-600);
   }
 
   .site-header__list {
