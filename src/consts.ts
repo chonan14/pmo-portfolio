@@ -72,6 +72,25 @@ export const METHODS: readonly string[] = [
   'CxO向けレポーティング',
 ];
 
+/** 対応できるフェーズ・状況（こういう時に呼んでください） */
+export const PHASES: readonly { title: string; body: string }[] = [
+  { title: '立上げ・計画', body: '目的・体制・進め方が定まらないプロジェクトの初動を設計する。' },
+  { title: '炎上・リカバリー', body: '遅延・重大インシデント・対立で止まった現場を、火消しから立て直す。' },
+  { title: '大規模・全社横断', body: '多拠点・マルチベンダー・全社業務にまたがる統制と合意形成を担う。' },
+  { title: '0→1・新概念導入', body: '前例のない制度・業務・システムをゼロから設計し、定着まで導く。' },
+  { title: '官民・制度対応', body: '法規制・ガイドライン・行政連携を要する難案件の実行計画を策定する。' },
+];
+
+/** 専門知識・得意領域（制度・法令の理解が差別化軸） */
+export const EXPERTISE: readonly string[] = [
+  '本人確認（KYC / eKYC・保証レベル IAL/AAL）',
+  '携帯電話不正利用防止法',
+  '個人情報・利用者保護',
+  '災害時・有事の特例運用設計',
+  '官民連携・ガイドライン策定',
+  '自治体DX・実証実験',
+];
+
 export type NavItem = {
   href: string;
   label: string;

@@ -14,7 +14,10 @@ const levelClass = (l: string): string =>
           <ul class="smx__list">
             {g.items.map((it) => (
               <li class="smx__item">
-                <span class:list={['smx__level', `smx__level--${levelClass(it.level)}`]}>
+                <span
+                  class:list={['smx__level', `smx__level--${levelClass(it.level)}`]}
+                  aria-label={it.level === '◎' ? '主担当' : it.level === '○' ? '経験あり' : '補佐'}
+                >
                   {it.level}
                 </span>
                 <span class="smx__label">{it.label}</span>

@@ -1,0 +1,10 @@
+{
+  "name": "長南 貴則｜統括PMO",
+  "short_name": "長南 貴則",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "theme_color": "#102a4c",
+  "background_color": "#ffffff",
+  "display": "browser"
+}

@@ -6,7 +6,7 @@ import Voices from '@/components/Voices.astro';
 import { Image } from 'astro:assets';
 import portrait from '@/assets/portrait.jpg';
 import { getCollection } from 'astro:content';
-import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING, HIGHLIGHTS } from '@/consts';
+import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING, HIGHLIGHTS, PHASES } from '@/consts';
 
 const projects = (await getCollection('projects')).filter((p) => p.data.status === 'Public');
 const featured = projects
@@ -91,6 +91,26 @@ const projectCount = projects.length;
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-default">
+      <header class="section__head">
+        <p class="section-eyebrow">Scenes</p>
+        <h2 class="section__title">こういう時に、呼んでください</h2>
+        <p class="section__desc">これまで対応してきたプロジェクトのフェーズ・状況です。</p>
+      </header>
+      <ul class="phases">
+        {
+          PHASES.map((p) => (
+            <li class="phase">
+              <h3 class="phase__title">{p.title}</h3>
+              <p class="phase__body">{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
@@ -397,6 +417,36 @@ const projectCount = projects.length;
     margin: 0.75rem 0 0;
     font-size: 0.92rem;
     line-height: 1.95;
+    color: var(--color-ink-soft);
+  }
+
+  .phases {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .phase {
+    padding: 1.4rem;
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-card);
+    background: var(--color-paper);
+  }
+
+  .phase__title {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-primary);
+  }
+
+  .phase__body {
+    margin: 0.5rem 0 0;
+    font-size: 0.88rem;
+    line-height: 1.8;
     color: var(--color-ink-soft);
   }
 

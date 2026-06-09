@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import CareerTimeline from '@/components/CareerTimeline.astro';
 import SkillsMatrix from '@/components/SkillsMatrix.astro';
 import { getCollection } from 'astro:content';
-import { TOOLS, METHODS } from '@/consts';
+import { TOOLS, METHODS, EXPERTISE } from '@/consts';
 
 const all = (await getCollection('career')).filter((c) => c.data.status === 'Public');
 const byType = (t: string) =>
@@ -33,7 +33,7 @@ const summary: Array<{ label: string; value: string }> = [
       <p class="section-eyebrow">Career</p>
       <h1 class="page-head__title">職務経歴</h1>
       <p class="page-head__lead">
-        NTTドコモにて約16年、統括PMO／戦略PMOとして全社横断システム導入・DX推進・危機対応に従事。以降フリーランスPMOとして大手事業会社のIT部門を支援。IPA・デジタル庁の委員として国のガイドライン策定にも参画しています。
+        NTTドコモに約16年在籍。入社後の数年は営業・現場（顧客管理システムのRFP策定から研修まで）を経験し、以降の約10年を統括PMO／戦略PMOとして全社横断システム導入・DX推進・危機対応に従事。現場を知り尽くしたうえでの統括が強みです。以降フリーランスPMOとして大手事業会社のIT部門を支援。IPA・デジタル庁の委員として国のガイドライン策定にも参画しています。
       </p>
     </div>
   </section>
@@ -63,6 +63,13 @@ const summary: Array<{ label: string; value: string }> = [
         <h2 class="block__title">PM方法論・手法</h2>
         <ul class="methods">
           {METHODS.map((m) => <li>{m}</li>)}
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2 class="block__title">専門知識・得意領域</h2>
+        <ul class="methods">
+          {EXPERTISE.map((e) => <li>{e}</li>)}
         </ul>
       </div>
 
