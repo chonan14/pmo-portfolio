@@ -2,12 +2,12 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import portrait from '@/assets/portrait.jpg';
-import { PROFILE, PHILOSOPHY } from '@/consts';
+import { PROFILE, PHILOSOPHY, MOTTO } from '@/consts';
 ---
 
 <BaseLayout
   title="About"
-  description="長南貴則について。プロジェクトの成否はPMOで決まる——経営と現場を翻訳し、上流から下流・制度まで見通し、目的への貢献まで完遂する。その仕事観と人物像。"
+  description="長南貴則について。プロジェクトの結果を大きく左右するのはPMOだと考える——経営と現場を翻訳し、上流から下流・制度まで見通し、目的への貢献に全力を尽くす。その仕事観と人物像。"
 >
   <section class="page-head">
     <div class="container-default page-head__inner">
@@ -31,20 +31,21 @@ import { PROFILE, PHILOSOPHY } from '@/consts';
   <section class="page-section">
     <div class="container-narrow prose">
       <p class="prose__lead">
-        なぜ、止まった・始まらないプロジェクトを任せられるのか。その背景にある考え方と、人物像をお伝えします。
+        なぜ、止まったプロジェクトを前に進められるのか。その背景にある考え方と、人物像をお伝えします。
       </p>
       <h2>仕事観</h2>
       <p>
-        プロジェクトの結果の良し悪しは、PMOで決まる——私はそう考えています。経営層の考えを翻訳し、現場の悩みを解決し、対立を起こさせない。コミュニケーションと情報の対称性を担保しながら、さまざまな壁を越え、地図に描いた目的地に到達する。その瞬間の喜びは、何物にも代えがたいものです。
+        私は、プロジェクトの結果を大きく左右するのはPMOだと考えています。経営層の考えを翻訳し、現場の悩みを解決し、対立を起こさせない。コミュニケーションと情報の対称性を担保しながら、さまざまな壁を越え、地図に描いた目的地への到達に力を注ぐ。その瞬間の喜びは、何物にも代えがたいものです。
       </p>
 
-      <blockquote class="prose__quote pull-quote">
-        声の大きさではなく、目的にとっての正しさで決める。
-      </blockquote>
+      <aside class="creed">
+        <p class="creed__head">{MOTTO.headline}</p>
+        <p class="creed__body">{MOTTO.body}</p>
+      </aside>
 
       <h2>信念</h2>
       <p>
-        私は、業務を完遂させたい。そのために、自分も妥協せず、相手にも妥協を許さない環境をつくります。判断の基準は、声の大きさではなく「目的にとって最も大事かどうか」。目的に沿わなければ、立場が上の人でも、声の大きい人でも、冷静に詰める。邪魔はさせません。
+        私は、業務の完遂に向けて全力を尽くしたい。そのために、自分も妥協せず、相手にも最善を求める環境づくりに注力します。判断の基準は、声の大きさではなく「目的にとって最も大事かどうか」。目的に沿わなければ、立場が上の人でも、声の大きい人でも、冷静に詰める。邪魔を排する環境づくりに全力を尽くします。
       </p>
       <p>
         ただし、それは独善ではありません。難しいのは、時間とともに硬直化が進みがちな大きな組織の中で、目的を見失わずにいることです。「前例だから」「指示だから」と、本来の目的から外れた作業が続いてしまう状況に飲まれそうになりながらも、自分だけは大局観を失わず、マクロとミクロの両面で大切なことを言語化し続け、前を向く。その積み重ねが、今の私をつくりました。だからこそ大切にしているのは、<strong>「{PHILOSOPHY}」</strong>という姿勢です。
@@ -60,7 +61,7 @@ import { PROFILE, PHILOSOPHY } from '@/consts';
 
       <h2>素顔</h2>
       <p>
-        仕事の上で、人間関係は大切にします。しかし、完遂の前では、仲良しこよしでパフォーマンスが落ちることは許されない。プロフェッショナルは、結果を出してこそだと思っています。
+        仕事の上で、人間関係は大切にします。その一方で、完遂という目的に向けて、最善のパフォーマンスを発揮することが私の責務だと思っています。プロフェッショナルとして、私も相手もその覚悟を持ちたい。
       </p>
       <p>
         私が最も愛しているのは家族です。妻と娘がこの世で最も大切で、そのために働いています。一方で、働くこと自体は自分のため。働くことは、この世で最も面白い遊びだとさえ思います。自分の人生で培ったものをアウトプットし、何かが出来上がり、それを誰かが使って喜ぶ——こんなに楽しいことはありません。この世界はまだ未知ばかり。生きているうちに少しでも解き明かしたくて、余暇には研究もします。世界を楽しむことを、忘れないでいたい。
@@ -68,7 +69,7 @@ import { PROFILE, PHILOSOPHY } from '@/consts';
 
       <h2>これから</h2>
       <p>
-        これからも、PMOとして経営層とPMを支えていきたい。そして、大手企業の現場から吸収できることは、すべて吸収していきます。
+        これからも、PMOとして経営層と現場の間に立ち、正しい判断と円滑なコミュニケーションをもたらす仕事に専念していきたい。そして、大手企業の現場から吸収できることは、すべて吸収していきます。
       </p>
 
       <div class="prose__links">
@@ -132,6 +133,31 @@ import { PROFILE, PHILOSOPHY } from '@/consts';
     margin: 0 0 2rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--color-rule);
+  }
+
+  .creed {
+    margin: 2.25rem 0;
+    padding: 1.75rem 1.75rem 1.85rem;
+    background: linear-gradient(180deg, var(--color-primary-50), var(--color-paper));
+    border: 1px solid var(--color-rule);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-card);
+  }
+
+  .creed__head {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    line-height: 1.6;
+  }
+
+  .creed__body {
+    margin: 1rem 0 0;
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--color-ink);
   }
 
   .prose :global(h2) {
