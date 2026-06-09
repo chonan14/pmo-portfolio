@@ -18,12 +18,12 @@ const {
   image = SITE.ogImage,
   type = 'website',
   canonical,
-  noindex = false,
+  noindex,
   jsonLd = [],
 } = Astro.props;
 
+const isNoindex = noindex ?? SITE.noindex ?? false;
 const pageTitle = title ? SITE.titleTemplate.replace('%s', title) : SITE.defaultTitle;
-
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE.url).toString();
 const ogImageUrl = image.startsWith('http') ? image : new URL(image, SITE.url).toString();
 
@@ -35,7 +35,7 @@ const allJsonLd = [...baseJsonLd, ...jsonLd];
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
 
-{noindex && <meta name="robots" content="noindex,nofollow" />}
+{isNoindex && <meta name="robots" content="noindex,nofollow" />}
 
 <meta property="og:type" content={type} />
 <meta property="og:title" content={pageTitle} />

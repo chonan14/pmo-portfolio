@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CareerTimeline from '@/components/CareerTimeline.astro';
-import CTASection from '@/components/CTASection.astro';
+import SkillsMatrix from '@/components/SkillsMatrix.astro';
 import { getCollection } from 'astro:content';
+import { TOOLS } from '@/consts';
 
 const all = (await getCollection('career')).filter((c) => c.data.status === 'Public');
 const byType = (t: string) =>
@@ -14,23 +15,18 @@ const employment = byType('Employment');
 const committee = byType('Committee');
 const education = byType('Education');
 
-const skillSummary: Array<{ label: string; value: string }> = [
+const summary: Array<{ label: string; value: string }> = [
   { label: 'PMO実務', value: '約10年（統括PMO／戦略PMO／リードPMO／管理PMO）' },
   { label: '最大案件', value: '開発予算1兆円 ／ 体制2,000人 ／ 期間18ヶ月（LTE全国展開）' },
   { label: '対応業界', value: '通信・金融・公共（自治体DX）／ 業界不問で対応可' },
   { label: '官公庁実績', value: '総務省・経済産業省・IPA・デジタル庁との直接協働' },
-  {
-    label: '強み領域',
-    value:
-      '統括PMO統制 ／ CxO向けレポーティング ／ マルチベンダーコントロール ／ クライシスマネジメント ／ 合意形成・ルールメイキング',
-  },
-  { label: '使用ツール', value: 'MS Office ／ Slack ／ Backlog ／ Confluence ／ MS Teams ／ Notion' },
+  { label: '使用ツール', value: TOOLS.join(' ／ ') },
 ];
 ---
 
 <BaseLayout
   title="職務経歴"
-  description="長南貴則の職務経歴。NTTドコモでの統括PMO／戦略PMO（2007〜2026）、フリーランスPMO、IPA専門委員・デジタル庁デジタル推進委員、政策学修士。"
+  description="長南貴則の職務経歴。NTTドコモでの統括PMO／戦略PMO（2007〜2023・約16年）、フリーランスPMO、IPA専門委員・デジタル庁デジタル推進委員、政策学修士。"
 >
   <section class="page-head">
     <div class="container-default">
@@ -44,12 +40,12 @@ const skillSummary: Array<{ label: string; value: string }> = [
 
   <section class="page-section">
     <div class="container-default">
-      <div class="skills">
-        <h2 class="skills__title">PMOスキルサマリー</h2>
-        <dl class="skills__list">
+      <div class="block">
+        <h2 class="block__title">PMOスキルサマリー</h2>
+        <dl class="summary">
           {
-            skillSummary.map((s) => (
-              <div class="skills__row">
+            summary.map((s) => (
+              <div class="summary__row">
                 <dt>{s.label}</dt>
                 <dd>{s.value}</dd>
               </div>
@@ -58,15 +54,16 @@ const skillSummary: Array<{ label: string; value: string }> = [
         </dl>
       </div>
 
+      <div class="block">
+        <h2 class="block__title">スキル・コンピテンシー</h2>
+        <SkillsMatrix />
+      </div>
+
       <CareerTimeline title="職歴" entries={employment} />
       <CareerTimeline title="委員・外部活動" entries={committee} />
       <CareerTimeline title="学歴" entries={education} />
     </div>
   </section>
-
-  <div class="container-wide cta-wrap">
-    <CTASection />
-  </div>
 </BaseLayout>
 
 <style>
@@ -77,69 +74,62 @@ const skillSummary: Array<{ label: string; value: string }> = [
 
   .page-head__title {
     margin: 1rem 0 0;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
   }
 
   .page-head__lead {
     margin: 1.25rem 0 0;
     color: var(--color-ink-soft);
-    line-height: 1.95;
+    line-height: 2;
   }
 
   .page-section {
     padding-block: clamp(2.5rem, 6vw, 4rem);
   }
 
-  .skills {
-    margin-bottom: 3.5rem;
-    padding: 1.75rem;
-    background: var(--color-paper-soft);
+  .block {
+    margin-bottom: 3rem;
+  }
+
+  .block__title {
+    font-size: 1.2rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .summary {
+    margin: 0;
     border: 1px solid var(--color-rule);
     border-radius: var(--radius-card);
+    overflow: hidden;
   }
 
-  .skills__title {
-    margin: 0 0 1.25rem;
-    font-size: 1.2rem;
-  }
-
-  .skills__list {
-    margin: 0;
+  .summary__row {
     display: grid;
-    gap: 0;
-  }
-
-  .skills__row {
-    display: grid;
-    grid-template-columns: 8rem 1fr;
+    grid-template-columns: 9rem 1fr;
     gap: 1rem;
-    padding: 0.75rem 0;
+    padding: 0.85rem 1.25rem;
     border-top: 1px solid var(--color-rule);
   }
 
-  .skills__row:first-child {
+  .summary__row:first-child {
     border-top: none;
   }
 
-  .skills__row dt {
+  .summary__row dt {
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--color-primary);
   }
 
-  .skills__row dd {
+  .summary__row dd {
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.8;
     color: var(--color-ink);
   }
 
-  .cta-wrap {
-    margin-bottom: clamp(3rem, 8vw, 6rem);
-  }
-
   @media (max-width: 600px) {
-    .skills__row {
+    .summary__row {
       grid-template-columns: 1fr;
       gap: 0.25rem;
     }

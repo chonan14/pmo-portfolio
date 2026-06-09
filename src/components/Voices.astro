@@ -1,0 +1,41 @@
+---
+import { VOICES } from '@/consts';
+---
+
+<div class="voices">
+  {
+    VOICES.map((v) => (
+      <figure class="voice">
+        <blockquote class="voice__quote pull-quote">「{v.quote}」</blockquote>
+        <figcaption class="voice__by">— {v.attribution}</figcaption>
+      </figure>
+    ))
+  }
+</div>
+
+<style>
+  .voices {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .voice {
+    margin: 0;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .voice__quote {
+    margin: 0;
+    font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+    color: var(--color-primary);
+    position: relative;
+  }
+
+  .voice__by {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--color-ink-soft);
+    letter-spacing: 0.04em;
+  }
+</style>

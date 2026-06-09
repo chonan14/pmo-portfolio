@@ -1,35 +1,53 @@
 export const SITE = {
-  url: 'https://pmo.koho.tokyo',
-  name: '長南貴則｜PMOコンサルタント',
-  shortName: '長南貴則 PMO',
+  url: 'https://pmo-portfolio.pages.dev',
+  name: '長南貴則｜統括PMO',
+  shortName: '長南貴則',
   defaultTitle: '長南貴則｜統括PMO・戦略PMO・クライシスマネジメント',
-  titleTemplate: '%s｜長南貴則 PMO',
+  titleTemplate: '%s｜長南貴則',
   description:
-    'PMO実務歴 約10年。NTTドコモにて開発予算1兆円・体制2,000人規模のLTE全国展開をはじめ、全社横断システム導入・DX推進・危機対応の統括PMO／戦略PMOを歴任。IPA専門委員・デジタル庁デジタル推進委員。CxOの右腕として機能する統括PMOを、外部PMO案件として提供します。',
+    'PMO実務歴 約10年。NTTドコモにて開発予算1兆円・体制2,000人規模のLTE全国展開、東日本大震災の危機対応、6,000万回線規模の制度実装などの統括PMO／戦略PMOを歴任。IPA専門委員・デジタル庁デジタル推進委員。「目的への貢献まで完遂し、期限内に報告する」安心を提供します。',
   locale: 'ja_JP',
   lang: 'ja',
-  themeColor: '#043e80',
+  themeColor: '#102a4c',
   ogImage: '/og-default.png',
+  email: 'takanori.chonan@gmail.com',
+  // 転職あっせん事業者へ提出する個人ポートフォリオ。非公開リンク前提（検索除外）。
+  noindex: true,
 } as const;
 
 export const PROFILE = {
   fullName: '長南 貴則',
   fullNameReading: 'ちょうなん たかのり',
   fullNameEn: 'Chonan Takanori',
-  title: '統括PMO ／ 戦略PMO ／ クライシスマネジメント専門家',
+  title: '統括PMO ／ 戦略PMO ／ クライシスマネジメント',
   pmoYears: 'PMO実務歴 約10年',
-  company: '合同会社KOHO 代表',
-  catchphrase: '「何を決めるべきか」を可視化し、\nプロジェクトを止めずに前進させる。',
+  catchphrase: '「何を決めるべきか」を可視化し、\nプロジェクトを、止めずに前進させる。',
   lead:
-    '単なる進捗管理者ではなく、CxOの右腕として機能する統括PMO。「何を決めるべきか／誰をどう動かすか／どの順番で整理すべきか」を可視化し、経営・現場・外部機関を横断してプロジェクトを前進させます。',
-  email: 'takanori.chonan@gmail.com',
+    'プロジェクトの成否はPMOで決まる——そう考えています。経営層の意図を翻訳し、現場の悩みを解き、対立を起こさせない。コミュニケーションと情報の対称性を担保しながら、いくつもの壁を越え、地図に描いた目的地まで到達させる。それが私の仕事です。',
 } as const;
 
-export const AVAILABILITY = {
-  days: '週3〜4日',
-  location: 'フルリモート優先',
-  start: '即日可（応相談）',
+/** 差別化の一文（上流〜下流・制度まで見通す全体知） */
+export const POSITIONING =
+  '上流から下流まで、そして制度まで。全体像と“つながり”を見通せるから、問題が起きても対処できる。';
+
+/** 価値提案＝「安心」の定義 */
+export const VALUE_PROP = {
+  headline: '任せれば、完遂する。',
+  body:
+    '依頼された作業を表面でこなすのではなく、その先の「目的への貢献」まで含めて完遂する。そして、期限内に必ず完了報告がある。経営層とPMが安心して任せられる——それが私の提供価値です。',
 } as const;
+
+/** 信念・哲学 */
+export const PHILOSOPHY =
+  '声の大きさではなく、目的にとっての正しさで決める。周りに押し付けず、自分を持ち続ける。';
+
+/** 希望する関わり方（転職あっせん事業者向けの判断材料） */
+export const SEEKING: Array<{ label: string; value: string }> = [
+  { label: '形態', value: '業務委託' },
+  { label: '領域', value: 'PMO ／ 通信・行政・金融' },
+  { label: '稼働', value: 'フルリモート ／ 週5日以下' },
+  { label: '役割', value: '経営層とPMを支える統括PMO' },
+];
 
 export type NavItem = {
   href: string;
@@ -40,24 +58,16 @@ export type NavItem = {
 export const NAV: readonly NavItem[] = [
   { href: '/projects/', label: '実績・ケーススタディ' },
   { href: '/career/', label: '職務経歴' },
-  { href: '/portfolio/', label: 'ポートフォリオ' },
   { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'お問い合わせ', emphasized: true },
 ];
 
 export const FOOTER_LINKS: readonly NavItem[] = [
   { href: '/projects/', label: '実績・ケーススタディ' },
   { href: '/career/', label: '職務経歴' },
-  { href: '/portfolio/', label: 'ポートフォリオ' },
   { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'お問い合わせ' },
 ];
 
-export type Stat = {
-  value: string;
-  unit?: string;
-  label: string;
-};
+export type Stat = { value: string; label: string };
 
 export const STATS: readonly Stat[] = [
   { value: '約10年', label: 'PMO実務歴（統括／戦略／管理）' },
@@ -66,31 +76,76 @@ export const STATS: readonly Stat[] = [
   { value: '2機関', label: '国の委員（IPA・デジタル庁）' },
 ];
 
-export type Strength = {
-  eyebrow: string;
-  title: string;
-  body: string;
-};
+export type Strength = { eyebrow: string; title: string; body: string };
 
 export const STRENGTHS: readonly Strength[] = [
   {
-    eyebrow: 'GOVERNANCE',
-    title: '統括PMO統制・CxOレポーティング',
-    body: '経営層と現場が同じ粒度で判断できるレポート体系を設計。「何を・誰を・どの順番で」を可視化し、意思決定の遅滞を解消します。',
+    eyebrow: 'TRANSLATE',
+    title: '経営と現場を“翻訳”する',
+    body: '経営層の意図を現場の言葉へ、現場の悩みを経営の判断材料へ。双方が同じ粒度で判断できる状態をつくり、意思決定の遅滞を解消します。',
   },
   {
-    eyebrow: 'VENDOR CONTROL',
-    title: 'マルチベンダーコントロール',
-    body: '新規開発要件と保守要件、事実(制約)と理想(To-Be)を切り分け、ベンダー間の情報非対称を解消。手戻りと納期遅延を抑制します。',
+    eyebrow: 'WHOLE-VIEW',
+    title: '上流〜下流・制度まで見通す',
+    body: '要件の上流から運用の下流、そして法制度まで。全体像と“つながり”を把握しているからこそ、問題が起きても根本から対処できます。',
+  },
+  {
+    eyebrow: 'JUDGMENT',
+    title: '正しさで決め、ネックを潰す',
+    body: '声の大きさではなく、目的にとっての正しさで判断。会議では相手の真意と“本当のネック”を見極め、裏で奔走してそれを解消します。',
   },
   {
     eyebrow: 'CRISIS',
-    title: 'クライシスマネジメント',
-    body: '炎上・有事において「責任論」を排除し、事実整理・影響最小化・確定事項の迅速決定に論点を集中。二次被害ゼロで収束へ導きます。',
+    title: '有事に、迅速に決める',
+    body: 'メリット・デメリット・法令の範囲を、有事の中で一つひとつ迅速に判断。全国へ通達し、混乱を最小化して人を守る制度を立ち上げます。',
+  },
+];
+
+/** スキル・コンピテンシーマトリクス（◎=主担当 ○=経験あり △=補佐） */
+export type SkillLevel = '◎' | '○' | '△';
+export type SkillItem = { label: string; level: SkillLevel };
+
+export const SKILL_GROUPS: Array<{ title: string; items: SkillItem[] }> = [
+  {
+    title: 'PMO機能',
+    items: [
+      { label: '計画・立上', level: '◎' },
+      { label: '進捗管理', level: '◎' },
+      { label: 'リスク管理', level: '◎' },
+      { label: 'ステークホルダー管理', level: '◎' },
+      { label: '変更管理', level: '◎' },
+      { label: '品質管理', level: '○' },
+    ],
   },
   {
-    eyebrow: 'RULE MAKING',
-    title: '合意形成・ルールメイキング',
-    body: '官民・業界横断の利害を、決定可能な粒度へ収束。IPA・デジタル庁での国のガイドライン策定など、制度・法規制を踏まえた実行計画を策定します。',
+    title: '対応領域',
+    items: [
+      { label: '大規模SI', level: '◎' },
+      { label: '官公庁連携', level: '◎' },
+      { label: '危機対応', level: '◎' },
+      { label: 'マルチベンダー統制', level: '◎' },
+      { label: 'ゼロ→1 新概念導入', level: '◎' },
+      { label: 'DX推進', level: '○' },
+    ],
   },
+];
+
+/** 現場で実際に頂いた言葉（個人名は出さず、関係性のみ記載） */
+export type Voice = { quote: string; attribution: string };
+
+export const VOICES: readonly Voice[] = [
+  {
+    quote: '君に任せておけば、必ず完遂する。安心して、自由にやってほしい。',
+    attribution: '担当案件の責任者（経営層）',
+  },
+];
+
+/** 使用ツール */
+export const TOOLS: readonly string[] = [
+  'MS Office (Word/Excel/PowerPoint)',
+  'Slack',
+  'Backlog',
+  'Confluence',
+  'MS Teams',
+  'Notion',
 ];

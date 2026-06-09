@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProjectCard from '@/components/ProjectCard.astro';
-import CTASection from '@/components/CTASection.astro';
+import SkillsMatrix from '@/components/SkillsMatrix.astro';
+import Voices from '@/components/Voices.astro';
+import { Image } from 'astro:assets';
+import portrait from '@/assets/portrait.jpg';
 import { getCollection } from 'astro:content';
-import { PROFILE, STATS, STRENGTHS } from '@/consts';
+import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING } from '@/consts';
 
 const projects = (await getCollection('projects')).filter((p) => p.data.status === 'Public');
 const featured = projects
@@ -15,34 +18,54 @@ const projectCount = projects.length;
 
 <BaseLayout>
   <section class="hero">
-    <div class="hero__bg" aria-hidden="true"></div>
     <div class="container-wide hero__inner">
       <div class="hero__text">
-        <p class="hero__role">{PROFILE.title}</p>
-        <h1 class="hero__title">{PROFILE.catchphrase}</h1>
+        <p class="hero__eyebrow">{PROFILE.pmoYears}</p>
+        <h1 class="hero__name">
+          {PROFILE.fullName}<span class="hero__name-en">{PROFILE.fullNameEn}</span>
+        </h1>
+        <p class="hero__title">{PROFILE.title}</p>
+        <p class="hero__catch">{PROFILE.catchphrase}</p>
         <p class="hero__lead">{PROFILE.lead}</p>
         <div class="hero__cta">
           <a href="/projects/" class="btn-primary">実績・ケーススタディを見る</a>
-          <a href="/contact/" class="btn-ghost">PMO相談（初回無料）</a>
+          <a href="/career/" class="btn-ghost">職務経歴</a>
         </div>
       </div>
+      <div class="hero__media">
+        <div class="hero__photo-frame">
+          <Image
+            src={portrait}
+            alt={`${PROFILE.fullName} ポートレート`}
+            widths={[420, 840]}
+            sizes="(max-width: 900px) 64vw, 420px"
+            class="hero__photo"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <aside class="hero__card" aria-label="プロフィール要点">
-        <p class="hero__card-name">
-          {PROFILE.fullName}<span>{PROFILE.fullNameReading}</span>
-        </p>
-        <p class="hero__card-company">{PROFILE.company}</p>
-        <dl class="hero__stats">
-          {
-            STATS.map((s) => (
-              <div class="hero__stat">
-                <dt>{s.value}</dt>
-                <dd>{s.label}</dd>
-              </div>
-            ))
-          }
-        </dl>
-      </aside>
+  <section class="vp">
+    <div class="container-default vp__inner">
+      <p class="section-eyebrow vp__eyebrow">Value</p>
+      <p class="vp__headline pull-quote">{VALUE_PROP.headline}</p>
+      <p class="vp__body">{VALUE_PROP.body}</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container-wide">
+      <dl class="stats__grid">
+        {
+          STATS.map((s) => (
+            <div class="stats__item">
+              <dt>{s.value}</dt>
+              <dd>{s.label}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
   </section>
 
@@ -50,10 +73,8 @@ const projectCount = projects.length;
     <div class="container-wide">
       <header class="section__head">
         <p class="section-eyebrow">Strengths</p>
-        <h2 class="section__title">提供する4つの強み</h2>
-        <p class="section__desc">
-          単なる進捗管理者ではなく、CxOの右腕として「決める」を前進させます。
-        </p>
+        <h2 class="section__title">4つの強み</h2>
+        <p class="section__desc">{POSITIONING}</p>
       </header>
       <div class="strengths">
         {
@@ -75,7 +96,7 @@ const projectCount = projects.length;
         <p class="section-eyebrow">Case Studies</p>
         <h2 class="section__title">代表的な実績</h2>
         <p class="section__desc">
-          国家インフラ規模の展開から危機対応、官民連携まで。全{projectCount}件のケースを掲載しています。
+          国家インフラ規模の展開から危機対応、官民連携まで。全{projectCount}件を掲載しています。
         </p>
       </header>
       <div class="cards">
@@ -87,72 +108,111 @@ const projectCount = projects.length;
     </div>
   </section>
 
-  <div class="container-wide cta-wrap">
-    <CTASection />
-  </div>
+  <section class="section">
+    <div class="container-default">
+      <header class="section__head">
+        <p class="section-eyebrow">Competency</p>
+        <h2 class="section__title">スキル・コンピテンシー</h2>
+      </header>
+      <SkillsMatrix />
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container-narrow">
+      <header class="section__head">
+        <p class="section-eyebrow">Voice</p>
+        <h2 class="section__title">現場で頂いた言葉</h2>
+      </header>
+      <Voices />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-default">
+      <header class="section__head">
+        <p class="section-eyebrow">Engagement</p>
+        <h2 class="section__title">希望する関わり方</h2>
+      </header>
+      <dl class="seeking">
+        {
+          SEEKING.map((s) => (
+            <div class="seeking__row">
+              <dt>{s.label}</dt>
+              <dd>{s.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
   .hero {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: var(--color-bg);
+    background: linear-gradient(180deg, var(--color-primary-50) 0%, var(--color-paper) 70%);
     border-bottom: 1px solid var(--color-rule);
-  }
-
-  .hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-image:
-      radial-gradient(60% 55% at 82% -5%, rgba(163, 113, 247, 0.2) 0, transparent 60%),
-      radial-gradient(45% 50% at 12% 8%, rgba(47, 129, 247, 0.16) 0, transparent 58%),
-      radial-gradient(40% 45% at 65% 110%, rgba(247, 120, 186, 0.1) 0, transparent 60%),
-      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: auto, auto, auto, 56px 56px, 56px 56px;
-    mask-image: radial-gradient(circle at 60% 25%, black 0, transparent 85%);
   }
 
   .hero__inner {
     display: grid;
-    grid-template-columns: 1.3fr 0.9fr;
+    grid-template-columns: 1.3fr 0.8fr;
     gap: 3rem;
     align-items: center;
-    padding-block: clamp(3rem, 8vw, 5.5rem);
+    padding-block: clamp(3rem, 7vw, 5rem);
   }
 
-  .hero__role {
+  .hero__eyebrow {
     display: inline-block;
-    font-family: var(--font-mono);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-weight: 700;
     font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    margin: 0;
+  }
+
+  .hero__name {
+    margin: 0.75rem 0 0;
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
     letter-spacing: 0.04em;
-    color: var(--color-primary-400);
-    background: rgba(47, 129, 247, 0.08);
-    border: 1px solid var(--color-primary-100);
-    padding: 0.4rem 0.9rem;
-    border-radius: 9999px;
+    color: var(--color-primary);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__name-en {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--color-ink-soft);
   }
 
   .hero__title {
-    margin: 1.5rem 0 0;
-    font-size: clamp(2rem, 4.8vw, 3.25rem);
-    line-height: 1.4;
-    letter-spacing: -0.01em;
+    margin: 0.75rem 0 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: 0.04em;
+  }
+
+  .hero__catch {
+    margin: 1.75rem 0 0;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 2.8vw, 1.9rem);
+    line-height: 1.6;
+    color: var(--color-primary);
     white-space: pre-line;
-    background: linear-gradient(180deg, #ffffff 28%, #8b949e 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
   }
 
   .hero__lead {
     margin: 1.5rem 0 0;
     max-width: 36rem;
-    font-size: 1.02rem;
-    line-height: 1.95;
+    font-size: 0.98rem;
+    line-height: 2;
     color: var(--color-ink-soft);
   }
 
@@ -160,72 +220,86 @@ const projectCount = projects.length;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-top: 2.25rem;
+    margin-top: 2rem;
   }
 
-  .hero__card {
-    background: var(--color-paper);
-    border: 1px solid var(--color-rule);
+  .hero__photo-frame {
+    aspect-ratio: 4 / 5;
     border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    padding: 2rem;
-  }
-
-  .hero__card-name {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--color-ink);
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .hero__card-name span {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--color-ink-soft);
-    letter-spacing: 0.08em;
-  }
-
-  .hero__card-company {
-    margin: 0.4rem 0 0;
-    font-size: 0.85rem;
-    color: var(--color-ink-soft);
-  }
-
-  .hero__stats {
-    margin: 1.75rem 0 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--color-rule);
-    border: 1px solid var(--color-rule);
-    border-radius: 0.75rem;
     overflow: hidden;
+    border: 1px solid var(--color-rule);
+    box-shadow: var(--shadow-card);
+    background: var(--color-paper-soft);
   }
 
-  .hero__stat {
-    background: var(--color-paper);
-    padding: 1rem;
+  .hero__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vp {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .vp__inner {
+    padding-block: clamp(3rem, 7vw, 4.5rem);
     text-align: center;
   }
 
-  .hero__stat dt {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    line-height: 1.2;
+  .vp__eyebrow {
+    color: var(--color-accent);
+    justify-content: center;
   }
 
-  .hero__stat dd {
-    margin: 0.4rem 0 0;
-    font-size: 0.72rem;
+  .vp__eyebrow::before {
+    background: var(--color-accent);
+  }
+
+  .vp__headline {
+    margin: 1.25rem 0 0;
+    font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+    color: white;
+  }
+
+  .vp__body {
+    margin: 1.5rem auto 0;
+    max-width: 42rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .stats {
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .stats__grid {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stats__item {
+    text-align: center;
+  }
+
+  .stats__item dt {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.1;
+  }
+
+  .stats__item dd {
+    margin: 0.6rem 0 0;
+    font-size: 0.78rem;
     color: var(--color-ink-soft);
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .section {
@@ -238,11 +312,11 @@ const projectCount = projects.length;
 
   .section__head {
     text-align: center;
-    max-width: 42rem;
+    max-width: 44rem;
     margin: 0 auto 3rem;
   }
 
-  .section-eyebrow {
+  .section__head .section-eyebrow {
     justify-content: center;
   }
 
@@ -252,9 +326,9 @@ const projectCount = projects.length;
   }
 
   .section__desc {
-    margin: 1rem 0 0;
+    margin: 1.25rem 0 0;
     color: var(--color-ink-soft);
-    line-height: 1.9;
+    line-height: 1.95;
   }
 
   .strengths {
@@ -289,7 +363,7 @@ const projectCount = projects.length;
   .strength__body {
     margin: 0.75rem 0 0;
     font-size: 0.92rem;
-    line-height: 1.9;
+    line-height: 1.95;
     color: var(--color-ink-soft);
   }
 
@@ -304,17 +378,45 @@ const projectCount = projects.length;
     text-align: center;
   }
 
-  .cta-wrap {
-    margin-block: clamp(3.5rem, 8vw, 6rem);
+  .seeking {
+    margin: 0;
+    border-top: 1px solid var(--color-rule);
+    max-width: 40rem;
+    margin-inline: auto;
   }
 
-  @media (max-width: 960px) {
+  .seeking__row {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .seeking__row dt {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+  }
+
+  .seeking__row dd {
+    margin: 0;
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 900px) {
     .hero__inner {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
+    }
+    .hero__media {
+      max-width: 22rem;
+    }
+    .stats__grid {
+      grid-template-columns: 1fr 1fr;
     }
     .cards {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
     }
   }
 
@@ -322,8 +424,9 @@ const projectCount = projects.length;
     .strengths {
       grid-template-columns: 1fr;
     }
-    .cards {
+    .seeking__row {
       grid-template-columns: 1fr;
+      gap: 0.25rem;
     }
   }
 </style>

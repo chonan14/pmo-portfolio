@@ -8,18 +8,14 @@ export function buildPersonJsonLd() {
     alternateName: PROFILE.fullNameEn,
     url: SITE.url,
     image: `${SITE.url}${SITE.ogImage}`,
-    jobTitle: 'PMOコンサルタント（統括PMO／戦略PMO）',
-    worksFor: {
-      '@type': 'Organization',
-      name: '合同会社KOHO',
-    },
+    jobTitle: '統括PMO ／ 戦略PMO',
     knowsAbout: [
       'PMO',
       'プロジェクトマネジメント',
       'クライシスマネジメント',
-      'DX推進',
       'マルチベンダーコントロール',
       '合意形成・ルールメイキング',
+      'eKYC・本人確認（KYC）',
     ],
     nationality: 'JP',
   };

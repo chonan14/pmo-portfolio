@@ -1,4 +1,3 @@
+# 非公開リンク前提のポートフォリオ（検索エンジンには載せない）
 User-agent: *
-Allow: /
-
-Sitemap: https://pmo.koho.tokyo/sitemap-index.xml
+Disallow: /

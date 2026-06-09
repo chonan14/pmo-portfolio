@@ -6,8 +6,7 @@ import { z } from 'zod';
 const slug = z.string().regex(/^[a-z0-9-]+$/, 'slug は半角小文字英数字とハイフンのみ');
 const status = z.enum(['Public', 'Draft', 'Archive']).default('Public');
 
-// Projects（プロジェクト経歴・案件履歴）= 最重要。課題→介入→成果 の3段で記述。
-// Notion の Projects DB と 1:1 対応させ、将来の sync-from-notion で同形に生成する。
+// Projects（プロジェクト経歴・案件履歴）= 課題→介入→成果 の3段で記述。
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.{yaml,yml}', base: './src/content/projects' }),
   schema: z.object({
@@ -52,21 +51,4 @@ const career = defineCollection({
   }),
 });
 
-// Portfolio（制作物・成果物）= 目に見える成果物で実装能力を証明。
-const portfolio = defineCollection({
-  loader: glob({ pattern: '**/*.{yaml,yml}', base: './src/content/portfolio' }),
-  schema: z.object({
-    title: z.string(),
-    slug,
-    status,
-    displayOrder: z.number().int(),
-    type: z.array(z.string()).default([]),
-    category: z.string().optional(),
-    description: z.string(),
-    url: z.url().optional(),
-    techStack: z.array(z.string()).default([]),
-    keyMetrics: z.array(z.string()).default([]),
-  }),
-});
-
-export const collections = { projects, career, portfolio };
+export const collections = { projects, career };

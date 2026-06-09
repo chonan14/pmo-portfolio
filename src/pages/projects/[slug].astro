@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CaseStudy from '@/components/CaseStudy.astro';
-import CTASection from '@/components/CTASection.astro';
 import { getCollection } from 'astro:content';
 import { buildBreadcrumbJsonLd } from '@/lib/seo';
 import { SITE } from '@/consts';
@@ -44,9 +43,6 @@ const breadcrumb = buildBreadcrumbJsonLd([
     </div>
   </div>
 
-  <div class="container-wide cta-wrap">
-    <CTASection heading="同様の課題、ありませんか？" />
-  </div>
 </BaseLayout>
 
 <style>
