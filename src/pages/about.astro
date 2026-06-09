@@ -30,6 +30,9 @@ import { PROFILE, PHILOSOPHY } from '@/consts';
 
   <section class="page-section">
     <div class="container-narrow prose">
+      <p class="prose__lead">
+        なぜ、止まった・始まらないプロジェクトを任せられるのか。その背景にある考え方と、人物像をお伝えします。
+      </p>
       <h2>仕事観</h2>
       <p>
         プロジェクトの結果の良し悪しは、PMOで決まる——私はそう考えています。経営層の考えを翻訳し、現場の悩みを解決し、対立を起こさせない。コミュニケーションと情報の対称性を担保しながら、さまざまな壁を越え、地図に描いた目的地に到達する。その瞬間の喜びは、何物にも代えがたいものです。
@@ -119,6 +122,15 @@ import { PROFILE, PHILOSOPHY } from '@/consts';
 
   .page-section {
     padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .prose .prose__lead {
+    font-size: 1.12rem;
+    line-height: 1.95;
+    color: var(--color-ink);
+    margin: 0 0 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-rule);
   }
 
   .prose :global(h2) {
