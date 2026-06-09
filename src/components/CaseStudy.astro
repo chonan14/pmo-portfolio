@@ -60,21 +60,21 @@ const meta = [
 
   <div class="case__body">
     <section class="case__block">
-      <h2 class="case__block-title"><span class="case__block-no">01</span>課題</h2>
+      <h2 class="case__block-title"><span class="case__block-no">01</span>クライアントの課題</h2>
       <ul class="case__list">
         {d.challenge.map((c) => <li>{c}</li>)}
       </ul>
     </section>
 
     <section class="case__block">
-      <h2 class="case__block-title"><span class="case__block-no">02</span>介入（実施したこと）</h2>
+      <h2 class="case__block-title"><span class="case__block-no">02</span>私の介入</h2>
       <ul class="case__list">
         {d.intervention.map((c) => <li>{c}</li>)}
       </ul>
     </section>
 
     <section class="case__block case__block--result">
-      <h2 class="case__block-title"><span class="case__block-no">03</span>成果</h2>
+      <h2 class="case__block-title"><span class="case__block-no">03</span>もたらした成果</h2>
       <ul class="case__list case__list--quant">
         {d.resultsQuantitative.map((c) => <li>{c}</li>)}
       </ul>
