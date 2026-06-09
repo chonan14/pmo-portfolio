@@ -47,7 +47,7 @@ export const SEEKING: Array<{ label: string; value: string }> = [
   { label: '領域', value: 'PMO ／ 通信・行政・金融' },
   { label: '稼働', value: 'フルリモート ／ 週3〜5日（応相談）' },
   { label: '開始', value: '即日可（応相談）' },
-  { label: '単価', value: '応相談' },
+  { label: '単価', value: '月額 120万円〜（税別・応相談）' },
   { label: '役割', value: '経営層とPMを支える統括PMO' },
 ];
 
