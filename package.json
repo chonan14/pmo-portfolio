@@ -11,13 +11,17 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "sync": "node --env-file-if-exists=.env scripts/sync-from-notion.mjs",
+    "notion:bootstrap": "node --env-file-if-exists=.env scripts/notion-bootstrap.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.2",
+    "@notionhq/client": "^5.22.0",
     "@tailwindcss/vite": "4.2.4",
     "@types/qrcode": "^1.5.6",
     "astro": "6.2.1",
+    "js-yaml": "^4.2.0",
     "qrcode": "^1.5.4",
     "tailwindcss": "4.2.4",
     "zod": "4.4.2"
