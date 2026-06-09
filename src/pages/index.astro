@@ -6,7 +6,7 @@ import Voices from '@/components/Voices.astro';
 import { Image } from 'astro:assets';
 import portrait from '@/assets/portrait.jpg';
 import { getCollection } from 'astro:content';
-import { PROFILE, STATS, BENEFITS, VALUE_PROP, SEEKING, HIGHLIGHTS, VALUE_STAGES, HERO, CLIENT_PAINS, SITE } from '@/consts';
+import { PROFILE, STATS, BENEFITS, VALUE_PROP, SEEKING, HIGHLIGHTS, VALUE_STAGES, HERO, CLIENT_PAINS, SITE, PROCESS, FAQ } from '@/consts';
 
 const projects = (await getCollection('projects')).filter((p) => p.data.status === 'Public');
 const featured = projects
@@ -183,6 +183,45 @@ const projectCount = projects.length;
             <div class="seeking__row">
               <dt>{s.label}</dt>
               <dd>{s.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container-default">
+      <header class="section__head">
+        <p class="section-eyebrow">How to Engage</p>
+        <h2 class="section__title">ご依頼の流れ</h2>
+      </header>
+      <ol class="process">
+        {
+          PROCESS.map((p) => (
+            <li class="process__step">
+              <span class="process__num">{p.step}</span>
+              <h3 class="process__title">{p.title}</h3>
+              <p class="process__body">{p.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <header class="section__head">
+        <p class="section-eyebrow">FAQ</p>
+        <h2 class="section__title">よくあるご不安へ</h2>
+      </header>
+      <dl class="faq">
+        {
+          FAQ.map((f) => (
+            <div class="faq__item">
+              <dt class="faq__q">{f.q}</dt>
+              <dd class="faq__a">{f.a}</dd>
             </div>
           ))
         }
@@ -654,6 +693,79 @@ const projectCount = projects.length;
   .seeking__row dd {
     margin: 0;
     color: var(--color-ink);
+  }
+
+  .process {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .process__step {
+    padding: 1.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-card);
+    text-align: center;
+  }
+
+  .process__num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--color-accent);
+  }
+
+  .process__title {
+    margin: 0.5rem 0 0;
+    font-size: 1.05rem;
+    color: var(--color-primary);
+  }
+
+  .process__body {
+    margin: 0.5rem 0 0;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+  }
+
+  .faq {
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .faq__item {
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-card);
+    padding: 1.25rem 1.5rem;
+    background: var(--color-paper);
+  }
+
+  .faq__q {
+    font-weight: 700;
+    color: var(--color-primary);
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .faq__q::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 800;
+  }
+
+  .faq__a {
+    margin: 0.6rem 0 0;
+    padding-left: 1.5rem;
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--color-ink-soft);
   }
 
   .closing {
