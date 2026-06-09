@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>職務経歴書｜長南 貴則</title>
+<style>
+  @page { size: A4; margin: 11mm 12mm; }
+  :root{
+    --navy:#102a4c; --navy-d:#0b1f39;
+    --gold:#a87d3f; --gold-d:#876326;
+    --ink:#1b2430; --sub:#586374;
+    --rule:#e4e8ee; --bg:#fff; --bg2:#f6f8fb;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:'Yu Gothic','YuGothic','Meiryo','Noto Sans JP',sans-serif;
+    color:var(--ink); background:#fff; line-height:1.5;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    font-size:9.6px;
+  }
+  .mincho{ font-family:'Yu Mincho','YuMincho',serif; }
+  .page{
+    width:186mm; min-height:275mm; margin:0 auto; position:relative;
+    background:#fff;
+  }
+  .page + .page{ page-break-before:always; }
+
+  /* ===== PAGE 1 : two-column-exec ===== */
+  .p1{ display:grid; grid-template-columns:58mm 1fr; gap:0; }
+
+  /* --- left sidebar --- */
+  .side{
+    background:var(--navy); color:#eef2f8; padding:7mm 6mm 6mm;
+    position:relative;
+  }
+  .side:after{ content:""; position:absolute; top:0; right:0; bottom:0; width:2.4mm;
+    background:linear-gradient(var(--gold),var(--gold-d)); }
+  .side .qr{
+    position:absolute; top:7mm; right:8mm;
+    width:22mm; height:22mm; border:0.5mm solid var(--gold);
+    border-radius:1mm; display:flex; align-items:center; justify-content:center;
+    color:rgba(168,125,63,.85); font-size:11px; letter-spacing:.18em;
+    background:rgba(255,255,255,.04);
+  }
+  .side .label{ font-size:7.6px; letter-spacing:.34em; color:var(--gold);
+    text-transform:uppercase; margin:0 0 1.5mm; }
+  .side .name-jp{ font-size:23px; font-weight:700; letter-spacing:.06em; line-height:1.15;
+    margin:0; color:#fff; }
+  .side .name-en{ font-size:9px; letter-spacing:.32em; color:#9fb2cc; margin:1.3mm 0 0; }
+  .roles{ margin:5mm 0 0; display:flex; flex-direction:column; gap:1.4mm; }
+  .role{ font-size:9.4px; font-weight:600; color:#dbe6f4; display:flex; align-items:center; gap:2mm; }
+  .role svg{ flex:0 0 auto; }
+  .contact{ margin:5mm 0 0; font-size:8.4px; color:#bccadd; line-height:1.7; }
+  .contact .row{ display:flex; align-items:center; gap:2mm; word-break:break-all; }
+  .hr-side{ height:0.4mm; background:rgba(255,255,255,.14); margin:5mm 0 4mm; }
+
+  .side h3{ font-size:8.2px; letter-spacing:.26em; color:var(--gold); margin:0 0 2.6mm;
+    text-transform:uppercase; font-weight:700; }
+  .comp-group{ margin-bottom:4mm; }
+  .comp-group .gname{ font-size:8.2px; color:#aebfd5; margin:0 0 1.6mm; letter-spacing:.08em; }
+  .comp{ display:flex; align-items:center; gap:1.6mm; margin:0 0 1.3mm; }
+  .comp .cn{ font-size:8.4px; color:#e7eef7; width:30mm; flex:0 0 30mm; }
+  .comp .bar{ flex:1; height:2.1mm; background:rgba(255,255,255,.12); border-radius:1mm; overflow:hidden; }
+  .comp .bar span{ display:block; height:100%; border-radius:1mm;
+    background:linear-gradient(90deg,var(--gold),var(--gold-d)); }
+  .comp .mk{ font-size:8px; width:4mm; flex:0 0 4mm; text-align:center; color:#cdd9e8; }
+
+  .know{ margin-top:1mm; }
+  .know li{ font-size:8.1px; color:#cdd9e8; list-style:none; position:relative;
+    padding-left:3.4mm; margin:0 0 1.1mm; line-height:1.4; }
+  .know li:before{ content:""; position:absolute; left:0; top:1.5mm; width:1.4mm; height:1.4mm;
+    background:var(--gold); transform:rotate(45deg); }
+  .know{ padding:0; margin:0; }
+
+  /* --- right main --- */
+  .main{ padding:7mm 0 6mm 7mm; }
+  .main-top{ display:flex; align-items:flex-start; justify-content:space-between; }
+  .doc-title .ttl{ font-size:18px; font-weight:700; letter-spacing:.05em; color:var(--navy); margin:0; }
+  .doc-title .sub{ font-size:8.4px; color:var(--sub); letter-spacing:.16em; margin:1mm 0 0; }
+  .doc-title .accent{ width:26mm; height:0.9mm; background:linear-gradient(90deg,var(--gold),var(--gold-d));
+    margin:2mm 0 0; }
+
+  .sec-h{ display:flex; align-items:center; gap:2.2mm; margin:0 0 2.6mm; }
+  .sec-h .bar{ width:1.4mm; height:4.6mm; background:linear-gradient(var(--gold),var(--gold-d)); border-radius:.6mm; }
+  .sec-h .t{ font-size:11px; font-weight:700; color:var(--navy); letter-spacing:.12em; }
+  .sec-h .en{ font-size:7px; color:var(--sub); letter-spacing:.24em; margin-left:1mm; }
+
+  /* KPI */
+  .kpi{ display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; margin:6mm 0 0; }
+  .kpi .c{ background:var(--bg2); border:0.35mm solid var(--rule); border-top:1.1mm solid var(--gold);
+    border-radius:1.4mm; padding:3.4mm 2.6mm; text-align:center; }
+  .kpi .num{ font-size:21px; font-weight:700; color:var(--navy); letter-spacing:.01em; line-height:1; }
+  .kpi .num small{ font-size:11px; font-weight:700; }
+  .kpi .cap{ font-size:7.6px; color:var(--sub); margin-top:1.8mm; line-height:1.35; letter-spacing:.04em; }
+
+  /* timeline */
+  .tl-wrap{ margin:6.5mm 0 0; }
+  .tl-box{ background:#fff; border:0.35mm solid var(--rule); border-radius:1.4mm; padding:4mm 4mm 3mm; }
+
+  /* projects / badges */
+  .proj{ margin:6.5mm 0 0; display:grid; grid-template-columns:repeat(3,1fr); gap:3mm; }
+  .badge{ position:relative; border:0.5mm solid var(--gold); border-radius:1.6mm; padding:4mm 3mm 3.4mm;
+    background:linear-gradient(180deg,#fff, #fcfaf6); }
+  .badge:before{ content:""; position:absolute; inset:0.9mm; border:0.2mm solid rgba(168,125,63,.4);
+    border-radius:1mm; pointer-events:none; }
+  .badge .seal{ position:absolute; top:-3mm; left:50%; transform:translateX(-50%); }
+  .badge .yr{ font-size:7.4px; color:var(--gold-d); letter-spacing:.2em; text-align:center; margin:2mm 0 1.4mm; font-weight:700; }
+  .badge .pt{ font-size:8.8px; font-weight:700; color:var(--navy); text-align:center; line-height:1.3; min-height:11mm; }
+  .badge .meta{ font-size:7px; color:var(--sub); text-align:center; margin:1.2mm 0 2mm; letter-spacing:.02em; line-height:1.4; }
+  .badge .div{ height:0.3mm; background:var(--rule); margin:0 1mm 2mm; }
+  .badge .res{ font-size:8px; color:var(--ink); line-height:1.45; }
+  .badge .res b{ color:var(--gold-d); }
+
+  /* scope */
+  .scope{ margin:6.5mm 0 0; }
+  .scope-box{ border:0.35mm solid var(--rule); border-radius:1.4mm; padding:4mm 4mm 3.4mm; background:var(--bg2); }
+  .scope-note{ font-size:8px; color:var(--sub); margin:2.6mm 0 0; letter-spacing:.04em; }
+
+  /* ===== PAGE 2+ ===== */
+  .p2{ padding:2mm 0 0; }
+  .p2 h1.docname{ font-size:13px; font-weight:700; color:var(--navy); letter-spacing:.1em; margin:0 0 1mm; }
+  .p2 .topline{ display:flex; justify-content:space-between; align-items:baseline;
+    border-bottom:0.6mm solid var(--navy); padding-bottom:2mm; margin-bottom:5mm; }
+  .p2 .topline .who{ font-size:8.4px; color:var(--sub); }
+  .block{ margin:0 0 6mm; }
+  .summary{ font-size:9.2px; line-height:1.7; color:var(--ink); }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+  .kv{ font-size:8.8px; line-height:1.65; }
+  .kv dt{ font-weight:700; color:var(--navy); margin-top:2mm; font-size:8.6px; letter-spacing:.04em; }
+  .kv dd{ margin:0.4mm 0 0; color:var(--ink); }
+  .chips{ display:flex; flex-wrap:wrap; gap:1.6mm; margin:1mm 0 0; }
+  .chip{ font-size:8px; background:var(--bg2); border:0.3mm solid var(--rule); border-radius:6mm;
+    padding:1mm 2.6mm; color:var(--navy); }
+  table.career{ width:100%; border-collapse:collapse; font-size:8.6px; }
+  table.career th{ background:var(--navy); color:#fff; font-weight:600; text-align:left;
+    padding:2mm 2.4mm; letter-spacing:.06em; font-size:8.2px; }
+  table.career td{ border-bottom:0.3mm solid var(--rule); padding:2mm 2.4mm; vertical-align:top; }
+  table.career tr:nth-child(even) td{ background:var(--bg2); }
+  .pr-list{ margin:0; padding:0; list-style:none; }
+  .pr-list li{ position:relative; padding-left:6mm; margin:0 0 3mm; font-size:9px; line-height:1.65; }
+  .pr-list li .no{ position:absolute; left:0; top:0; width:4.4mm; height:4.4mm; border-radius:50%;
+    background:var(--navy); color:#fff; font-size:8px; display:flex; align-items:center; justify-content:center; font-weight:700; }
+  .pr-list li b{ color:var(--gold-d); }
+  .ms-list{ margin:0; padding:0; list-style:none; columns:2; column-gap:6mm; font-size:8.6px; }
+  .ms-list li{ position:relative; padding-left:4mm; margin:0 0 1.6mm; break-inside:avoid; line-height:1.4; }
+  .ms-list li:before{ content:""; position:absolute; left:0; top:1.4mm; width:1.6mm; height:1.6mm;
+    background:var(--gold); transform:rotate(45deg); }
+  .ms-list li b{ color:var(--navy); }
+  .foot{ margin-top:5mm; font-size:7.6px; color:var(--sub); text-align:right; letter-spacing:.08em; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<section class="page p1">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="side">
+    <div class="qr">QR</div>
+    <p class="label">Curriculum&nbsp;Vitae</p>
+    <h1 class="name-jp">長南&nbsp;貴則</h1>
+    <p class="name-en">CHONAN&nbsp;TAKANORI</p>
+
+    <div class="roles">
+      <div class="role">
+        <svg width="11" height="11" viewBox="0 0 11 11"><path d="M5.5 1.2 9.8 5.5 5.5 9.8 1.2 5.5z" fill="none" stroke="#a87d3f" stroke-width="1.1"/></svg>
+        統括PMO
+      </div>
+      <div class="role">
+        <svg width="11" height="11" viewBox="0 0 11 11"><path d="M5.5 1.2 9.8 5.5 5.5 9.8 1.2 5.5z" fill="none" stroke="#a87d3f" stroke-width="1.1"/></svg>
+        戦略PMO
+      </div>
+      <div class="role">
+        <svg width="11" height="11" viewBox="0 0 11 11"><path d="M5.5 1.2 9.8 5.5 5.5 9.8 1.2 5.5z" fill="none" stroke="#a87d3f" stroke-width="1.1"/></svg>
+        クライシスマネジメント
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="row">
+        <svg width="11" height="11" viewBox="0 0 16 16"><rect x="1.5" y="3" width="13" height="10" rx="1.2" fill="none" stroke="#9fb2cc" stroke-width="1.1"/><path d="M2 4l6 4.5L14 4" fill="none" stroke="#9fb2cc" stroke-width="1.1"/></svg>
+        takanori.chonan@gmail.com
+      </div>
+      <div class="row">
+        <svg width="11" height="11" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#9fb2cc" stroke-width="1.1"/><path d="M1.5 8h13M8 1.5c2.4 2 2.4 11 0 13M8 1.5c-2.4 2-2.4 11 0 13" fill="none" stroke="#9fb2cc" stroke-width="1"/></svg>
+        pmo-portfolio.pages.dev
+      </div>
+      <div class="row">
+        <svg width="11" height="11" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#9fb2cc" stroke-width="1.1"/><path d="M8 4v4l2.6 1.6" fill="none" stroke="#9fb2cc" stroke-width="1.1"/></svg>
+        PMO実務歴 約10年
+      </div>
+    </div>
+
+    <div class="hr-side"></div>
+
+    <h3>Competency</h3>
+    <div class="comp-group">
+      <p class="gname">PMO機能</p>
+      <div class="comp"><span class="cn">計画・立上</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">進捗管理</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">リスク管理</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">ステークホルダー管理</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">変更管理</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">品質管理</span><span class="bar"><span style="width:66%"></span></span><span class="mk">○</span></div>
+    </div>
+    <div class="comp-group">
+      <p class="gname">対応領域</p>
+      <div class="comp"><span class="cn">大規模SI</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">官公庁連携</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">危機対応</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">マルチベンダー統制</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">0→1新概念導入</span><span class="bar"><span style="width:100%"></span></span><span class="mk">◎</span></div>
+      <div class="comp"><span class="cn">DX推進</span><span class="bar"><span style="width:66%"></span></span><span class="mk">○</span></div>
+    </div>
+
+    <div class="hr-side"></div>
+
+    <h3>Expertise</h3>
+    <ul class="know">
+      <li>本人確認 KYC／eKYC（保証レベル IAL／AAL）</li>
+      <li>携帯電話不正利用防止法</li>
+      <li>個人情報・利用者保護</li>
+      <li>災害時の特例運用設計</li>
+      <li>官民連携・ガイドライン策定</li>
+      <li>自治体DX</li>
+    </ul>
+  </aside>
+
+  <!-- RIGHT MAIN -->
+  <div class="main">
+    <div class="main-top">
+      <div class="doc-title">
+        <p class="ttl mincho">職 務 経 歴 書</p>
+        <p class="sub">EXECUTIVE&nbsp;PMO&nbsp;／&nbsp;規模・時間軸・成果・射程</p>
+        <div class="accent"></div>
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="kpi">
+      <div class="c"><div class="num">約10<small>年</small></div><div class="cap">PMO実務歴</div></div>
+      <div class="c"><div class="num">1<small>兆円</small></div><div class="cap">最大案件<br>開発予算</div></div>
+      <div class="c"><div class="num">2,000<small>人</small></div><div class="cap">最大案件<br>開発体制</div></div>
+      <div class="c"><div class="num">18<small>ヶ月</small></div><div class="cap">最大案件<br>期間</div></div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="tl-wrap">
+      <div class="sec-h"><span class="bar"></span><span class="t">キャリア年表</span><span class="en">2007 — 2026</span></div>
+      <div class="tl-box">
+        <svg viewBox="0 0 560 188" width="100%" preserveAspectRatio="xMidYMid meet" font-family="'Yu Gothic','Meiryo',sans-serif">
+          <!-- year axis -->
+          <line x1="42" y1="22" x2="554" y2="22" stroke="#e4e8ee" stroke-width="1"/>
+          <!-- year ticks: 2007..2026 mapped over 42..554 -->
+          <g fill="#586374" font-size="8">
+            <text x="42" y="13" text-anchor="middle">2007</text>
+            <text x="150" y="13" text-anchor="middle">2011</text>
+            <text x="204" y="13" text-anchor="middle">2013</text>
+            <text x="285" y="13" text-anchor="middle">2016</text>
+            <text x="366" y="13" text-anchor="middle">2019</text>
+            <text x="420" y="13" text-anchor="middle">2021</text>
+            <text x="447" y="13" text-anchor="middle">2022</text>
+            <text x="554" y="13" text-anchor="middle">2026</text>
+          </g>
+          <g stroke="#eef1f6" stroke-width="1">
+            <line x1="42" y1="22" x2="42" y2="178"/>
+            <line x1="150" y1="22" x2="150" y2="178"/>
+            <line x1="204" y1="22" x2="204" y2="178"/>
+            <line x1="285" y1="22" x2="285" y2="178"/>
+            <line x1="366" y1="22" x2="366" y2="178"/>
+            <line x1="420" y1="22" x2="420" y2="178"/>
+            <line x1="554" y1="22" x2="554" y2="178"/>
+          </g>
+
+          <!-- Bars (x: year mapping  unit ≈ 26.95px/yr from 2007=42) -->
+          <!-- NTTドコモ 2007.4-2023.4 -> x 42..474 -->
+          <rect x="42" y="34" width="432" height="15" rx="3" fill="#102a4c"/>
+          <text x="50" y="44.5" fill="#fff" font-size="8.4" font-weight="bold">株式会社NTTドコモ（約16年・正社員 / 統括PMO・戦略PMO・リードPM）</text>
+
+          <!-- フリーランス 2023.5-現在 -> x 477..554 -->
+          <rect x="477" y="34" width="77" height="15" rx="3" fill="#a87d3f"/>
+          <text x="481" y="44.5" fill="#fff" font-size="7.6" font-weight="bold">個人事業 PMO（現在 稼働可能）</text>
+
+          <!-- IPA 2021.8-現在 -> x 426..554 -->
+          <rect x="426" y="55" width="128" height="13" rx="3" fill="none" stroke="#876326" stroke-width="1.2"/>
+          <text x="432" y="64.5" fill="#876326" font-size="7.6" font-weight="bold">IPA 専門委員（2021.8〜現在）</text>
+
+          <!-- デジタル庁 2023.1-現在 -> x 470..554 -->
+          <rect x="470" y="73" width="84" height="13" rx="3" fill="none" stroke="#876326" stroke-width="1.2"/>
+          <text x="475" y="82.5" fill="#876326" font-size="7.4" font-weight="bold">デジタル庁 推進委員</text>
+
+          <!-- 法政大学院 修士 point 2023.3 -> x≈472 -->
+          <g>
+            <path d="M468 90 l4 -7 4 7 -4 7z" fill="#102a4c"/>
+            <text x="476" y="96" fill="#102a4c" font-size="7.4" font-weight="bold">法政大学院 修士（政策学）2023.3 修了</text>
+          </g>
+
+          <!-- Milestones row -->
+          <line x1="42" y1="118" x2="554" y2="118" stroke="#e4e8ee" stroke-width="1"/>
+          <text x="42" y="113" fill="#586374" font-size="7.4" font-weight="bold">主要マイルストーン</text>
+          <g>
+            <!-- 2011 -->
+            <circle cx="150" cy="118" r="3.2" fill="#a87d3f"/>
+            <line x1="150" y1="118" x2="150" y2="130" stroke="#cfd6e0" stroke-width="0.8"/>
+            <text x="150" y="142" text-anchor="middle" fill="#1b2430" font-size="6.9">2011 LTE全国展開</text>
+            <text x="150" y="151" text-anchor="middle" fill="#586374" font-size="6.4">震災 災害対策本部</text>
+            <!-- 2012 -->
+            <circle cx="177" cy="118" r="3.2" fill="#a87d3f"/>
+            <line x1="177" y1="118" x2="177" y2="158" stroke="#cfd6e0" stroke-width="0.8"/>
+            <text x="177" y="170" text-anchor="middle" fill="#1b2430" font-size="6.9">2012「利用者」</text>
+            <text x="177" y="179" text-anchor="middle" fill="#586374" font-size="6.4">概念 新規実装</text>
+            <!-- 2016 -->
+            <circle cx="285" cy="118" r="3.2" fill="#a87d3f"/>
+            <line x1="285" y1="118" x2="285" y2="130" stroke="#cfd6e0" stroke-width="0.8"/>
+            <text x="285" y="142" text-anchor="middle" fill="#1b2430" font-size="6.9">2016 地方銀行</text>
+            <text x="285" y="151" text-anchor="middle" fill="#586374" font-size="6.4">2,000台更改</text>
+            <!-- 2019 -->
+            <circle cx="366" cy="118" r="3.2" fill="#a87d3f"/>
+            <line x1="366" y1="118" x2="366" y2="158" stroke="#cfd6e0" stroke-width="0.8"/>
+            <text x="366" y="170" text-anchor="middle" fill="#1b2430" font-size="6.9">2019 マルチ</text>
+            <text x="366" y="179" text-anchor="middle" fill="#586374" font-size="6.4">ベンダー統制</text>
+            <!-- 2021 -->
+            <circle cx="420" cy="118" r="3.2" fill="#a87d3f"/>
+            <line x1="420" y1="118" x2="420" y2="130" stroke="#cfd6e0" stroke-width="0.8"/>
+            <text x="420" y="142" text-anchor="middle" fill="#1b2430" font-size="6.9">2021 eKYC</text>
+            <text x="420" y="151" text-anchor="middle" fill="#586374" font-size="6.4">ガイドライン(IPA)</text>
+            <!-- 2022 -->
+            <circle cx="447" cy="118" r="3.2" fill="#a87d3f"/>
+            <line x1="447" y1="118" x2="447" y2="158" stroke="#cfd6e0" stroke-width="0.8"/>
+            <text x="447" y="170" text-anchor="middle" fill="#1b2430" font-size="6.9">2022 栃木県</text>
+            <text x="447" y="179" text-anchor="middle" fill="#586374" font-size="6.4">全自治体DX</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="proj-wrap">
+      <div class="sec-h" style="margin-top:6.5mm"><span class="bar"></span><span class="t">代表案件</span><span class="en">FLAGSHIP&nbsp;PROJECTS</span></div>
+      <div class="proj" style="margin-top:2mm">
+
+        <div class="badge">
+          <div class="seal">
+            <svg width="22" height="22" viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="17" fill="#fff" stroke="#a87d3f" stroke-width="1.4"/>
+              <circle cx="20" cy="20" r="13.5" fill="none" stroke="#876326" stroke-width="0.7"/>
+              <path d="M20 11l2.4 5 5.4.5-4.1 3.6 1.3 5.3L20 27.6 14.9 30.5l1.3-5.3-4.1-3.6 5.4-.5z" fill="#a87d3f"/>
+            </svg>
+          </div>
+          <div class="yr">2011</div>
+          <div class="pt">LTE全国展開<br>セールス部門 統括PMO</div>
+          <div class="meta">予算 1兆円 ／ 体制 2,000人 ／ 18ヶ月</div>
+          <div class="div"></div>
+          <div class="res">成果＝全国サービスインを<b>遅延ゼロ</b>で完遂</div>
+        </div>
+
+        <div class="badge">
+          <div class="seal">
+            <svg width="22" height="22" viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="17" fill="#fff" stroke="#a87d3f" stroke-width="1.4"/>
+              <circle cx="20" cy="20" r="13.5" fill="none" stroke="#876326" stroke-width="0.7"/>
+              <path d="M13 20.5l4.5 4.5L27.5 15" fill="none" stroke="#a87d3f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="yr">2011</div>
+          <div class="pt">東日本大震災<br>災害対策本部</div>
+          <div class="meta">緊急時オペレーション設計 ／ 全国通達</div>
+          <div class="div"></div>
+          <div class="res">成果＝書類なし開通の特例運用を<b>1日で全国通達・二次被害ゼロ</b></div>
+        </div>
+
+        <div class="badge">
+          <div class="seal">
+            <svg width="22" height="22" viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="17" fill="#fff" stroke="#a87d3f" stroke-width="1.4"/>
+              <circle cx="20" cy="20" r="13.5" fill="none" stroke="#876326" stroke-width="0.7"/>
+              <circle cx="14" cy="18" r="3.4" fill="none" stroke="#a87d3f" stroke-width="1.8"/>
+              <circle cx="26" cy="18" r="3.4" fill="none" stroke="#a87d3f" stroke-width="1.8"/>
+              <path d="M9 29c0-3 2.2-5 5-5s5 2 5 5M21 29c0-3 2.2-5 5-5s5 2 5 5" fill="none" stroke="#a87d3f" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="yr">2021</div>
+          <div class="pt">官民連携 eKYC<br>ガイドライン策定／IPA</div>
+          <div class="meta">官民横断 合意形成 ／ 業界標準化</div>
+          <div class="div"></div>
+          <div class="res">成果＝官民横断の合意形成を完遂・<b>業界標準として普及</b></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SCOPE -->
+    <div class="scope">
+      <div class="sec-h" style="margin-top:6mm"><span class="bar"></span><span class="t">射程</span><span class="en">UPSTREAM&nbsp;→&nbsp;DOWNSTREAM&nbsp;→&nbsp;REGULATION</span></div>
+      <div class="scope-box">
+        <svg viewBox="0 0 560 86" width="100%" preserveAspectRatio="xMidYMid meet" font-family="'Yu Gothic','Meiryo',sans-serif">
+          <!-- waterfall steps -->
+          <g>
+            <!-- 要件定義 -->
+            <rect x="4"   y="6"  width="104" height="22" rx="3" fill="#102a4c"/>
+            <text x="56"  y="20.5" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">要件定義</text>
+            <!-- 設計 -->
+            <rect x="116" y="20" width="104" height="22" rx="3" fill="#102a4c"/>
+            <text x="168" y="34.5" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">設計</text>
+            <!-- 実装 -->
+            <rect x="228" y="34" width="104" height="22" rx="3" fill="#102a4c"/>
+            <text x="280" y="48.5" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">実装</text>
+            <!-- 運用保守 -->
+            <rect x="340" y="48" width="104" height="22" rx="3" fill="#102a4c"/>
+            <text x="392" y="62.5" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">運用保守</text>
+            <!-- 法制度対応 (gold = 戦略拡張) -->
+            <rect x="452" y="62" width="104" height="22" rx="3" fill="#a87d3f"/>
+            <text x="504" y="76.5" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">法制度対応</text>
+          </g>
+          <!-- connecting arrows -->
+          <g stroke="#a87d3f" stroke-width="1.4" fill="none">
+            <path d="M108 21 L116 21 L116 27" marker-end="url(#ar)"/>
+            <path d="M220 35 L228 35 L228 41" marker-end="url(#ar)"/>
+            <path d="M332 49 L340 49 L340 55" marker-end="url(#ar)"/>
+            <path d="M444 63 L452 63 L452 69" marker-end="url(#ar)"/>
+          </g>
+          <defs>
+            <marker id="ar" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0 0 L6 3 L0 6 z" fill="#a87d3f"/>
+            </marker>
+          </defs>
+        </svg>
+        <!-- legend -->
+        <div style="display:flex;gap:8mm;margin-top:1mm;font-size:7.6px;color:#586374">
+          <span style="display:flex;align-items:center;gap:1.6mm"><span style="width:3mm;height:3mm;background:#102a4c;display:inline-block;border-radius:.6mm"></span>主担当（上流〜下流）</span>
+          <span style="display:flex;align-items:center;gap:1.6mm"><span style="width:3mm;height:3mm;background:#a87d3f;display:inline-block;border-radius:.6mm"></span>戦略拡張（制度）</span>
+        </div>
+        <p class="scope-note">要件の上流から運用の下流、そして制度まで見通す。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PAGE 2 ================= -->
+<section class="page p2">
+  <div class="topline">
+    <h1 class="docname">職務経歴書  — 詳細</h1>
+    <span class="who">長南 貴則（CHONAN TAKANORI）／ 統括PMO・戦略PMO・クライシスマネジメント</span>
+  </div>
+
+  <!-- 職務要約 -->
+  <div class="block">
+    <div class="sec-h"><span class="bar"></span><span class="t">職務要約</span><span class="en">SUMMARY</span></div>
+    <p class="summary">
+      通信キャリアの大規模システム開発において、統括PMO・戦略PMO・リードPMとして約16年従事。最大案件では開発予算1兆円・開発体制2,000人・期間18ヶ月のLTE全国展開を遅延ゼロで完遂した。東日本大震災では災害対策本部にて書類なし開通の特例運用を1日で全国通達し二次被害ゼロを実現。0→1の新概念導入（「利用者」概念の実装）、官民連携によるeKYCガイドライン策定など、要件の上流から運用の下流、そして制度まで見通す射程を強みとする。2023年5月より個人事業（フリーランスPMO）として稼働、現在 稼働可能。
+    </p>
+  </div>
+
+  <!-- 職務経歴（年表） -->
+  <div class="block">
+    <div class="sec-h"><span class="bar"></span><span class="t">経歴・公的活動</span><span class="en">CAREER</span></div>
+    <table class="career">
+      <thead><tr><th style="width:36mm">期間</th><th style="width:42mm">所属</th><th>役割・区分</th></tr></thead>
+      <tbody>
+        <tr><td>2007年4月〜2023年4月（約16年）</td><td>株式会社NTTドコモ</td><td>正社員／統括PMO・戦略PMO・リードPM</td></tr>
+        <tr><td>2023年5月〜現在</td><td>個人事業（フリーランスPMO）</td><td>管理PMO／現在 稼働可能</td></tr>
+        <tr><td>2021年8月〜現在</td><td>IPA（情報処理推進機構）</td><td>専門委員</td></tr>
+        <tr><td>2023年1月〜現在</td><td>デジタル庁</td><td>デジタル推進委員</td></tr>
+        <tr><td>2023年3月 修了</td><td>法政大学大学院 政策創造研究科</td><td>修士（政策学）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 主要マイルストーン -->
+  <div class="block">
+    <div class="sec-h"><span class="bar"></span><span class="t">主要マイルストーン</span><span class="en">MILESTONES</span></div>
+    <ul class="ms-list">
+      <li><b>2011</b> LTE全国展開／東日本大震災 災害対策本部</li>
+      <li><b>2012</b>「利用者」概念の新規実装</li>
+      <li><b>2016</b> 地方銀行 2,000台 更改</li>
+      <li><b>2019</b> マルチベンダー統制</li>
+      <li><b>2021</b> eKYCガイドライン策定（IPA）</li>
+      <li><b>2022</b> 栃木県 全自治体DX</li>
+    </ul>
+  </div>
+
+  <!-- スキル詳細 / 専門知識 -->
+  <div class="block">
+    <div class="sec-h"><span class="bar"></span><span class="t">専門知識</span><span class="en">EXPERTISE</span></div>
+    <div class="chips">
+      <span class="chip">本人確認 KYC／eKYC（保証レベル IAL／AAL）</span>
+      <span class="chip">携帯電話不正利用防止法</span>
+      <span class="chip">個人情報・利用者保護</span>
+      <span class="chip">災害時の特例運用設計</span>
+      <span class="chip">官民連携・ガイドライン策定</span>
+      <span class="chip">自治体DX</span>
+    </div>
+  </div>
+
+  <!-- 学歴 + 希望条件 -->
+  <div class="block grid2">
+    <div>
+      <div class="sec-h"><span class="bar"></span><span class="t">学歴</span><span class="en">EDUCATION</span></div>
+      <dl class="kv">
+        <dt>法政大学大学院 政策創造研究科</dt>
+        <dd>政策創造専攻 修士（政策学）／2023年3月 修了</dd>
+      </dl>
+    </div>
+    <div>
+      <div class="sec-h"><span class="bar"></span><span class="t">希望条件</span><span class="en">CONDITIONS</span></div>
+      <dl class="kv">
+        <dt>契約形態</dt><dd>業務委託</dd>
+        <dt>領域</dt><dd>PMO・通信・行政・金融</dd>
+        <dt>稼働</dt><dd>フルリモート／週3〜5日（応相談）／即日可</dd>
+        <dt>報酬</dt><dd>月額120万円〜（税別・応相談）</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- 自己PR -->
+  <div class="block">
+    <div class="sec-h"><span class="bar"></span><span class="t">自己PR</span><span class="en">PROFILE</span></div>
+    <ul class="pr-list">
+      <li><span class="no">1</span><b>信条</b>＝目的からの逸脱を許さないファシリテーション。声の大きさでなく“目的にとっての正しさ”で決める。周りに押し付けず、自分を持つ。</li>
+      <li><span class="no">2</span><b>強み</b>＝経営・政策的視点と現場の運用構築力の結節。上流〜下流〜制度の全体知を持つ。</li>
+      <li><span class="no">3</span><b>提供価値</b>＝目的への貢献まで完遂し、期限内に報告する“安心”を提供する。</li>
+    </ul>
+  </div>
+
+  <p class="foot">長南 貴則 ／ takanori.chonan@gmail.com ／ https://pmo-portfolio.pages.dev</p>
+</section>
+
+</body>
+</html>
