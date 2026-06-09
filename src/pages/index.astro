@@ -6,7 +6,7 @@ import Voices from '@/components/Voices.astro';
 import { Image } from 'astro:assets';
 import portrait from '@/assets/portrait.jpg';
 import { getCollection } from 'astro:content';
-import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING, HIGHLIGHTS, PHASES, VALUE_STAGES } from '@/consts';
+import { PROFILE, STATS, BENEFITS, VALUE_PROP, SEEKING, HIGHLIGHTS, VALUE_STAGES, HERO, CLIENT_PAINS } from '@/consts';
 
 const projects = (await getCollection('projects')).filter((p) => p.data.status === 'Public');
 const featured = projects
@@ -20,13 +20,12 @@ const projectCount = projects.length;
   <section class="hero">
     <div class="container-wide hero__inner">
       <div class="hero__text">
-        <p class="hero__eyebrow">{PROFILE.pmoYears}</p>
-        <h1 class="hero__name">
-          {PROFILE.fullName}<span class="hero__name-en">{PROFILE.fullNameEn}</span>
-        </h1>
-        <p class="hero__title">{PROFILE.title}</p>
-        <p class="hero__catch">{PROFILE.catchphrase}</p>
-        <p class="hero__lead">{PROFILE.lead}</p>
+        <p class="hero__eyebrow">{PROFILE.title}</p>
+        <h1 class="hero__head">{HERO.headline}</h1>
+        <p class="hero__sub">{HERO.sub}</p>
+        <p class="hero__nameline">
+          {PROFILE.fullName}<span>（{PROFILE.fullNameEn}）</span>　｜　{PROFILE.pmoYears}
+        </p>
         <ul class="hero__highlights">
           {HIGHLIGHTS.map((h) => <li>{h}</li>)}
         </ul>
@@ -47,6 +46,19 @@ const projectCount = projects.length;
           />
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container-default">
+      <header class="section__head">
+        <p class="section-eyebrow">Your Challenge</p>
+        <h2 class="section__title">こんなプロジェクト、止まっていませんか？</h2>
+      </header>
+      <ul class="pains">
+        {CLIENT_PAINS.map((p) => <li>{p}</li>)}
+      </ul>
+      <p class="pains__answer">——それ、<strong>動かします。</strong></p>
     </div>
   </section>
 
@@ -76,17 +88,16 @@ const projectCount = projects.length;
   <section class="section">
     <div class="container-wide">
       <header class="section__head">
-        <p class="section-eyebrow">Strengths</p>
-        <h2 class="section__title">4つの強み</h2>
-        <p class="section__desc">{POSITIONING}</p>
+        <p class="section-eyebrow">Your Benefit</p>
+        <h2 class="section__title">ご依頼で、得られること</h2>
+        <p class="section__desc">あなたのプロジェクトに、これだけの変化を起こします。</p>
       </header>
       <div class="strengths">
         {
-          STRENGTHS.map((s) => (
+          BENEFITS.map((b) => (
             <article class="strength">
-              <p class="strength__eyebrow">{s.eyebrow}</p>
-              <h3 class="strength__title">{s.title}</h3>
-              <p class="strength__body">{s.body}</p>
+              <h3 class="strength__title">{b.title}</h3>
+              <p class="strength__body">{b.body}</p>
             </article>
           ))
         }
@@ -119,26 +130,6 @@ const projectCount = projects.length;
           ))
         }
       </ol>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container-default">
-      <header class="section__head">
-        <p class="section-eyebrow">Scenes</p>
-        <h2 class="section__title">こういう時に、呼んでください</h2>
-        <p class="section__desc">これまで対応してきたプロジェクトのフェーズ・状況です。</p>
-      </header>
-      <ul class="phases">
-        {
-          PHASES.map((p) => (
-            <li class="phase">
-              <h3 class="phase__title">{p.title}</h3>
-              <p class="phase__body">{p.body}</p>
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </section>
 
@@ -184,7 +175,7 @@ const projectCount = projects.length;
     <div class="container-default">
       <header class="section__head">
         <p class="section-eyebrow">Engagement</p>
-        <h2 class="section__title">希望する関わり方</h2>
+        <h2 class="section__title">ご依頼の条件</h2>
       </header>
       <dl class="seeking">
         {
@@ -266,6 +257,38 @@ const projectCount = projects.length;
     font-size: 0.98rem;
     line-height: 2;
     color: var(--color-ink-soft);
+  }
+
+  .hero__head {
+    margin: 1.25rem 0 0;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5.2vw, 3.3rem);
+    line-height: 1.4;
+    color: var(--color-primary);
+    white-space: pre-line;
+  }
+
+  .hero__sub {
+    margin: 1.5rem 0 0;
+    max-width: 38rem;
+    font-size: 1rem;
+    line-height: 1.95;
+    color: var(--color-ink-soft);
+  }
+
+  .hero__nameline {
+    margin: 1.5rem 0 0;
+    font-size: 0.92rem;
+    color: var(--color-ink);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .hero__nameline span {
+    font-weight: 500;
+    color: var(--color-ink-soft);
+    font-size: 0.82rem;
   }
 
   .hero__highlights {
@@ -410,6 +433,37 @@ const projectCount = projects.length;
     margin: 1.25rem 0 0;
     color: var(--color-ink-soft);
     line-height: 1.95;
+  }
+
+  .pains {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 44rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .pains li {
+    padding: 0.9rem 1.1rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-left: 3px solid var(--color-primary-200);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+  }
+
+  .pains__answer {
+    margin: 1.75rem 0 0;
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    color: var(--color-primary);
+  }
+
+  .pains__answer strong {
+    color: var(--color-accent);
   }
 
   .strengths {
