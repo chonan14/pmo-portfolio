@@ -152,5 +152,9 @@ const projects = (await getCollection('projects'))
     .cards {
       grid-template-columns: 1fr;
     }
+    /* モバイルでは横長の表は隠し、タッチしやすいカードに一本化 */
+    .ptable-wrap {
+      display: none;
+    }
   }
 </style>
