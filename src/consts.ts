@@ -5,7 +5,7 @@ export const SITE = {
   defaultTitle: '長南貴則｜統括PMO・戦略PMO・クライシスマネジメント',
   titleTemplate: '%s｜長南貴則',
   description:
-    '「決まらない・進まない・炎上した」プロジェクトを、目的の達成へ導く統括PMO。PMO実務歴 約10年。開発予算1兆円規模の全社案件（全国セールス部門の統括PMO）から危機対応・官民連携・0→1の制度設計まで。IPA専門委員・デジタル庁デジタル推進委員。',
+    '「決まらない・進まない・炎上した」プロジェクトを、目的の達成へ導く統括PMO。PMO実務歴 約10年。国家インフラ規模の全社案件（全国セールス部門の統括PMO）から危機対応・官民連携・0→1の制度設計まで。IPA専門委員（eKYCガイドライン策定）。',
   locale: 'ja_JP',
   lang: 'ja',
   themeColor: '#102a4c',
@@ -57,7 +57,7 @@ export const BENEFITS: readonly { title: string; body: string }[] = [
   },
   {
     title: '立ち上がりから、即戦力',
-    body: '開発予算1兆円規模（案件全体）の全社案件で全国セールス部門の統括PMOを担当。危機対応・官民連携まで経験し、立ち上がりから貢献します。',
+    body: '国家インフラ規模の全社案件で全国セールス部門の統括PMOを担当。危機対応・官民連携まで経験し、立ち上がりから貢献します。',
   },
 ];
 
@@ -147,9 +147,9 @@ export const VALUE_STAGES: readonly {
 
 export const HIGHLIGHTS: readonly string[] = [
   'PMO実務 約10年（統括／戦略／リード／管理）',
-  '最大案件：開発予算1兆円・体制2,000人規模のLTE全国展開（全国セールス部門の統括PMO）',
+  '最大案件：国家インフラ規模のLTE全国展開（全国セールス部門の統括PMO）',
   '通信・金融・公共（自治体DX）／ 危機対応・官民連携・0→1新概念導入',
-  'IPA専門委員・デジタル庁デジタル推進委員 ／ 政策創造 修士',
+  'IPA専門委員（eKYCガイドライン策定）／ 政策創造 修士',
   '即戦力・フルリモート・即日可',
 ];
 
@@ -208,9 +208,9 @@ export type Stat = { value: string; label: string };
 
 export const STATS: readonly Stat[] = [
   { value: '約10年', label: 'PMO実務歴（統括／戦略／管理）' },
-  { value: '1兆円', label: '最大案件の開発予算（案件全体・単年度）' },
-  { value: '2,000人', label: '最大案件の開発体制（全体）' },
-  { value: 'IPA・デジタル庁', label: '専門委員／デジタル推進委員' },
+  { value: '約16年', label: '通信大手で大規模システム開発に従事' },
+  { value: '国家インフラ規模', label: '最大案件の全社プロジェクトを統括' },
+  { value: 'IPA専門委員', label: 'eKYCガイドライン策定に参画' },
 ];
 
 export type Strength = { eyebrow: string; title: string; body: string };

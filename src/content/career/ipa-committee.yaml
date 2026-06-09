@@ -4,7 +4,8 @@ status: Public
 organization: 独立行政法人情報処理推進機構（IPA）
 position: 専門委員
 startDate: '2021年8月'
-current: true
-displayOrder: 90
+endDate: '2022年'
+current: false
+displayOrder: 95
 responsibilities:
   - 経済産業省と協働し、デジタルKYC（サイバーセキュリティ）領域における国のガイドライン策定業務に従事

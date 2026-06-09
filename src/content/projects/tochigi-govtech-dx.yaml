@@ -1,4 +1,4 @@
-title: 栃木県全自治体DX推進・複数領域 実証実験マネジメント
+title: 県全域・全自治体DX推進・複数領域 実証実験マネジメント
 slug: tochigi-govtech-dx
 status: Public
 displayOrder: 65
@@ -7,16 +7,16 @@ industry:
   - 自治体DX
   - 公共
 clientScale: 官公庁（県・市・町・県警）
-clientNameVisible: 栃木県内 全自治体（県庁・市庁・町役場・県警）
+clientNameVisible: 北関東のある県・全自治体（県庁・市庁・町役場・県警）
 role: 自治体・金融担当 マネジャー
 durationStart: '2022'
 scope: 4領域（XR観光・5G健康・防災・教育）を同時推進 ／ 官民協働モデル構築
-confidentialityLevel: Open
+confidentialityLevel: Masked
 toolsMethods:
   - 行政の意思決定・予算制約を踏まえたDX推進フレームワーク
   - 4領域の一元管理体制（進捗・課題・リスク）
   - 官民協働モデル設計
-summary: 栃木県の全自治体を対象に、XR観光・5G健康・防災・教育の4領域でDX実証実験を同時推進。民間技術を自治体に適用するビジネスモデル構築も担った。
+summary: ある県の全自治体を対象に、XR観光・5G健康・防災・教育の4領域でDX実証実験を同時推進。民間技術を自治体に適用するビジネスモデル構築も担った。
 challenge:
   - 行政の意思決定サイクルが民間と異なり、プロジェクト推進スピードの調整が難しかった
   - 4領域（観光・健康・防災・教育）を同時並行で管理し、進捗・課題を一元管理する必要があった
