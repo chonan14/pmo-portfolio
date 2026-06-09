@@ -1,0 +1,35 @@
+name: Notion sync & deploy
+
+# Notion の内容を定期/手動で取り込み、ビルドして Cloudflare Pages へ自動公開する。
+# 事前に GitHub Secrets を登録:
+#   NOTION_API_KEY / NOTION_PROJECTS_DB / NOTION_CAREER_DB
+#   CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID
+# （PDF職務経歴書は手元で再生成してください。CIでは更新しません。）
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # 毎日 02:00 UTC（≒ 11:00 JST）
+  workflow_dispatch:
+
+jobs:
+  sync-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Sync from Notion
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_PROJECTS_DB: ${{ secrets.NOTION_PROJECTS_DB }}
+          NOTION_CAREER_DB: ${{ secrets.NOTION_CAREER_DB }}
+        run: node scripts/sync-from-notion.mjs
+      - run: npm run build
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=pmo-portfolio --branch=main --commit-dirty=true
