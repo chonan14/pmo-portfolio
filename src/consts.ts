@@ -49,6 +49,38 @@ export const SEEKING: Array<{ label: string; value: string }> = [
   { label: '開始', value: '即日可（応相談）' },
   { label: '単価', value: '月額 120万円〜（税別・応相談）' },
   { label: '役割', value: '経営層とPMを支える統括PMO' },
+  { label: '志向', value: '0→1・立上げ／再生フェーズ（定常運用は不得手）' },
+];
+
+/** 価値を出すフェーズ（0→1が核、定常運用は専門外） */
+export const VALUE_STAGES: readonly {
+  stage: string;
+  label: string;
+  emphasis: string;
+  strong: boolean;
+  body: string;
+}[] = [
+  {
+    stage: '0 → 1',
+    label: '創造・立上げ',
+    emphasis: '最も得意',
+    strong: true,
+    body: '前例のない制度・事業・仕組みを、ゼロから形にする。私が最も力を発揮するフェーズです。',
+  },
+  {
+    stage: '1 → 10',
+    label: '拡大・推進',
+    emphasis: '得意',
+    strong: true,
+    body: '立ち上げたものを軌道に乗せ、組織とプロセスを拡張する。ここも得意領域です。',
+  },
+  {
+    stage: '10 → 100',
+    label: '安定運用・維持',
+    emphasis: '専門外',
+    strong: false,
+    body: '定常運用・維持フェーズは専門ではありません。これを得意とする方が適任です。',
+  },
 ];
 
 export const HIGHLIGHTS: readonly string[] = [

@@ -6,7 +6,7 @@ import Voices from '@/components/Voices.astro';
 import { Image } from 'astro:assets';
 import portrait from '@/assets/portrait.jpg';
 import { getCollection } from 'astro:content';
-import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING, HIGHLIGHTS, PHASES } from '@/consts';
+import { PROFILE, STATS, STRENGTHS, POSITIONING, VALUE_PROP, SEEKING, HIGHLIGHTS, PHASES, VALUE_STAGES } from '@/consts';
 
 const projects = (await getCollection('projects')).filter((p) => p.data.status === 'Public');
 const featured = projects
@@ -91,6 +91,34 @@ const projectCount = projects.length;
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container-default">
+      <header class="section__head">
+        <p class="section-eyebrow">Where I Excel</p>
+        <h2 class="section__title">私が最も価値を出すフェーズ</h2>
+        <p class="section__desc">
+          0→1の創造・立上げが核です。安定運用フェーズは、それを得意とする方にお任せください。
+        </p>
+      </header>
+      <ol class="stages">
+        {
+          VALUE_STAGES.map((s) => (
+            <li class:list={['stage', s.strong && 'stage--strong']}>
+              <span class="stage__num">{s.stage}</span>
+              <div class="stage__main">
+                <p class="stage__head">
+                  <span class="stage__label">{s.label}</span>
+                  <span class="stage__emph">{s.emphasis}</span>
+                </p>
+                <p class="stage__body">{s.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
     </div>
   </section>
 
@@ -418,6 +446,80 @@ const projectCount = projects.length;
     font-size: 0.92rem;
     line-height: 1.95;
     color: var(--color-ink-soft);
+  }
+
+  .stages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-card);
+    opacity: 0.72;
+  }
+
+  .stage--strong {
+    opacity: 1;
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .stage__num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+
+  .stage__head {
+    margin: 0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .stage__label {
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  .stage__emph {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    padding: 0.1rem 0.55rem;
+    border-radius: 9999px;
+  }
+
+  .stage:not(.stage--strong) .stage__emph {
+    color: var(--color-ink-soft);
+    border-color: var(--color-rule);
+  }
+
+  .stage__body {
+    margin: 0.4rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+  }
+
+  @media (max-width: 560px) {
+    .stage {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
   }
 
   .phases {
