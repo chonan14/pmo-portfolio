@@ -5,7 +5,7 @@ export const SITE = {
   defaultTitle: '長南貴則｜統括PMO・戦略PMO・クライシスマネジメント',
   titleTemplate: '%s｜長南貴則',
   description:
-    '「決まらない・進まない・炎上した」プロジェクトを、目的の達成まで完遂させる統括PMO。PMO実務歴 約10年、開発予算1兆円規模の全社案件から危機対応・官民連携・0→1の制度設計まで。IPA専門委員・デジタル庁デジタル推進委員。',
+    '「決まらない・進まない・炎上した」プロジェクトを、目的の達成へ導く統括PMO。PMO実務歴 約10年。開発予算1兆円規模の全社案件（全国セールス部門の統括PMO）から危機対応・官民連携・0→1の制度設計まで。IPA専門委員・デジタル庁デジタル推進委員。',
   locale: 'ja_JP',
   lang: 'ja',
   themeColor: '#102a4c',
@@ -28,7 +28,7 @@ export const PROFILE = {
 
 /** 顧客視点ヒーロー（成果＝相手のメリットを先頭に） */
 export const HERO = {
-  headline: 'その難プロジェクト、\n完遂させます。',
+  headline: 'その難プロジェクト、\n完遂に導く。',
   sub: '「何を決めるべきか分からない」「対立で進まない」「炎上した」「前例がなく形にできない」——止まった・始まらないプロジェクトを、目的の達成まで導く統括PMOです。',
 } as const;
 
@@ -45,7 +45,7 @@ export const CLIENT_PAINS: readonly string[] = [
 export const BENEFITS: readonly { title: string; body: string }[] = [
   {
     title: '“完遂”まで、任せられる',
-    body: '依頼を作業で終わらせず、目的への貢献まで完遂。期限内に必ず完了報告があり、経営層とPMが安心して任せられます。',
+    body: '依頼を作業で終わらせず、目的への貢献まで見据えて取り組む。進捗・完了報告を確実に行い、経営層とPMが安心して任せられます。',
   },
   {
     title: '意思決定が、速くなる',
@@ -56,8 +56,8 @@ export const BENEFITS: readonly { title: string; body: string }[] = [
     body: '炎上・遅延・対立を、責任論を排して事実ベースで収束。二次被害を防ぎ、プロジェクトを安全に前進させます。',
   },
   {
-    title: '説明不要の、即戦力',
-    body: '開発予算1兆円規模の全社案件から危機対応・官民連携まで経験。現場を知り尽くした統括が、立ち上がりから貢献します。',
+    title: '立ち上がりから、即戦力',
+    body: '開発予算1兆円規模（案件全体）の全社案件で全国セールス部門の統括PMOを担当。危機対応・官民連携まで経験し、立ち上がりから貢献します。',
   },
 ];
 
@@ -72,7 +72,7 @@ export const PROCESS: readonly { step: string; title: string; body: string }[] =
 export const FAQ: readonly { q: string; a: string }[] = [
   {
     q: '守秘義務のある案件でも依頼できますか？',
-    a: '大規模SI・官民連携・金融など、守秘を前提とした統制を多数経験しています。NDAを順守し、機密に配慮して進めます。',
+    a: '大規模SI・官民連携・金融など、守秘を前提とした案件を多数経験しています。ご依頼時のNDAに基づき、機密を適切に管理します。',
   },
   {
     q: '立ち上がりは速いですか？',
@@ -94,9 +94,9 @@ export const POSITIONING =
 
 /** 価値提案＝「安心」の定義 */
 export const VALUE_PROP = {
-  headline: '任せれば、完遂する。',
+  headline: '任せて、前に進む。',
   body:
-    '依頼された作業を表面でこなすのではなく、その先の「目的への貢献」まで含めて完遂する。そして、期限内に必ず完了報告がある。経営層とPMが安心して任せられる——それが私の提供価値です。',
+    '依頼された作業を表面でこなすのではなく、その先の「目的への貢献」まで見据えて取り組む。そして、進捗・完了報告を確実に行う。経営層とPMが安心して任せられる——それが私の提供価値です。',
 } as const;
 
 /** 信念・哲学 */
@@ -147,7 +147,7 @@ export const VALUE_STAGES: readonly {
 
 export const HIGHLIGHTS: readonly string[] = [
   'PMO実務 約10年（統括／戦略／リード／管理）',
-  '最大案件：開発予算1兆円・体制2,000人・期間18ヶ月（LTE全国展開）',
+  '最大案件：開発予算1兆円・体制2,000人規模のLTE全国展開（全国セールス部門の統括PMO）',
   '通信・金融・公共（自治体DX）／ 危機対応・官民連携・0→1新概念導入',
   'IPA専門委員・デジタル庁デジタル推進委員 ／ 政策創造 修士',
   '即戦力・フルリモート・即日可',
@@ -208,9 +208,9 @@ export type Stat = { value: string; label: string };
 
 export const STATS: readonly Stat[] = [
   { value: '約10年', label: 'PMO実務歴（統括／戦略／管理）' },
-  { value: '1兆円', label: '最大案件 開発予算（単年度）' },
-  { value: '2,000人', label: '最大案件 開発体制' },
-  { value: '2機関', label: '国の委員（IPA・デジタル庁）' },
+  { value: '1兆円', label: '最大案件の開発予算（案件全体・単年度）' },
+  { value: '2,000人', label: '最大案件の開発体制（全体）' },
+  { value: 'IPA・デジタル庁', label: '専門委員／デジタル推進委員' },
 ];
 
 export type Strength = { eyebrow: string; title: string; body: string };
@@ -272,7 +272,7 @@ export type Voice = { quote: string; attribution: string };
 
 export const VOICES: readonly Voice[] = [
   {
-    quote: '君に任せておけば、必ず完遂する。安心して、自由にやってほしい。',
+    quote: '君に任せておけば、安心だ。自由にやってほしい。',
     attribution: '担当案件の責任者（経営層）',
   },
 ];
