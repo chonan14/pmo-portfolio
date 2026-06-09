@@ -33,7 +33,9 @@
   @page{ size:A4; margin:11mm 12mm; }
   @media print{
     html,body{background:#fff;}
-    .page{ box-shadow:none !important; margin:0 !important; }
+    .page{ box-shadow:none !important; margin:0 !important; min-height:0 !important; overflow:visible !important; }
+    .page:first-child{ page-break-after:always; }
+    .page:last-child{ page-break-after:auto; }
     *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   }
 
@@ -53,7 +55,7 @@
   /* ===================== HEADER ===================== */
   .hdr{
     position:relative;
-    padding:8mm 8mm 6.5mm 8mm;
+    padding:5mm 8mm 4mm 8mm;
     background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);
     color:#fff;
     overflow:hidden;
@@ -71,12 +73,12 @@
     font-weight:700;margin:0 0 2.6mm 0;
   }
   .name-ja{
-    font-size:28px;font-weight:700;letter-spacing:.08em;margin:0;line-height:1.05;
+    font-size:23px;font-weight:700;letter-spacing:.08em;margin:0;line-height:1.05;
   }
   .name-en{
-    font-size:9.6px;letter-spacing:.34em;color:#aebccc;margin:2.2mm 0 3.4mm 0;font-weight:600;
+    font-size:9.6px;letter-spacing:.34em;color:#aebccc;margin:1.4mm 0 2.2mm 0;font-weight:600;
   }
-  .roles{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:3mm;}
+  .roles{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:1.8mm;}
   .role-chip{
     border:1px solid rgba(168,125,63,.85);
     color:#f3e6cf;
@@ -110,11 +112,11 @@
   .qr-cap{font-size:7px;color:#aebccc;letter-spacing:.04em;margin-top:1.4mm;line-height:1.4;}
   .qr-cap b{color:#f3e6cf;}
 
-  .body{padding:6mm 8mm 7mm 8mm;}
+  .body{padding:3.5mm 8mm 3mm 8mm;}
 
   .sec-h{
     display:flex;align-items:center;gap:2.6mm;
-    margin:0 0 2.8mm 0;
+    margin:0 0 1.6mm 0;
   }
   .sec-h .num{
     font-size:9px;font-weight:800;color:#fff;background:var(--gold);
@@ -129,12 +131,12 @@
   .sec-line{flex:1;height:1px;background:var(--rule);}
 
   /* ===================== KPI DASHBOARD ===================== */
-  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-bottom:5.5mm;}
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-bottom:3mm;}
   .kpi{
     border:1px solid var(--rule);
     border-top:2.4px solid var(--gold);
     background:linear-gradient(180deg,#fff 0%,var(--tint) 100%);
-    padding:3.6mm 3.2mm 3.2mm 3.2mm;
+    padding:2.4mm 3mm 2.2mm 3mm;
     border-radius:2px;
     position:relative;
   }
@@ -144,18 +146,18 @@
     display:flex;align-items:baseline;gap:1px;
   }
   .kpi-big .unit{font-size:12px;font-weight:700;color:var(--gold-d);margin-left:.5mm;}
-  .kpi-lbl{font-size:8.6px;color:var(--sub);margin-top:2mm;font-weight:700;letter-spacing:.02em;}
+  .kpi-lbl{font-size:8.6px;color:var(--sub);margin-top:1.2mm;font-weight:700;letter-spacing:.02em;}
   .kpi-sub{font-size:7.4px;color:#8a94a2;margin-top:.5mm;}
 
   /* ===================== COMPETENCY ===================== */
-  .comp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-bottom:2.6mm;}
+  .comp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-bottom:1.4mm;}
   .comp-col h3{
-    font-size:9.2px;font-weight:700;color:var(--navy);margin:0 0 2.4mm 0;letter-spacing:.04em;
+    font-size:9.2px;font-weight:700;color:var(--navy);margin:0 0 1.4mm 0;letter-spacing:.04em;
     border-bottom:1px solid var(--rule);padding-bottom:1.2mm;
   }
-  .comp-row{display:flex;align-items:center;gap:2.6mm;margin-bottom:1.9mm;}
+  .comp-row{display:flex;align-items:center;gap:2.6mm;margin-bottom:1mm;}
   .comp-name{width:33mm;font-size:8.8px;font-weight:600;color:var(--ink);flex-shrink:0;}
-  .comp-bar{flex:1;height:4.4mm;background:var(--tint);border-radius:1px;position:relative;overflow:hidden;border:1px solid #eef1f5;}
+  .comp-bar{flex:1;height:3.4mm;background:var(--tint);border-radius:1px;position:relative;overflow:hidden;border:1px solid #eef1f5;}
   .comp-fill{height:100%;border-radius:0;background:linear-gradient(90deg,var(--navy-m),var(--navy-d));}
   .comp-fill.exp{background:linear-gradient(90deg,var(--gold),var(--gold-d));}
   .comp-mark{width:4.4mm;text-align:center;font-size:10px;font-weight:800;flex-shrink:0;}
@@ -166,7 +168,7 @@
   .legend i{width:7mm;height:2.6mm;border-radius:1px;display:inline-block;}
 
   /* ===================== ACHIEVEMENT BADGES ===================== */
-  .badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm;margin-bottom:5.5mm;}
+  .badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5mm;margin-bottom:3mm;}
   .badge{
     border:1.4px solid var(--gold);
     border-radius:2.5px;
@@ -178,14 +180,14 @@
   }
   .badge-top{
     background:linear-gradient(135deg,#fbf6ec 0%,#f3e8d2 100%);
-    padding:3mm 3mm 2.4mm 3mm;
+    padding:2.2mm 3mm 1.8mm 3mm;
     border-bottom:1px solid #ecddc0;
     display:flex;align-items:flex-start;gap:2.2mm;
   }
   .badge-seal{flex-shrink:0;}
   .badge-yr{font-size:8px;font-weight:800;color:var(--gold-d);letter-spacing:.08em;}
   .badge-ttl{font-size:9.4px;font-weight:700;color:var(--navy);line-height:1.3;margin-top:.5mm;}
-  .badge-body{padding:2.6mm 3mm 3mm 3mm;flex:1;display:flex;flex-direction:column;}
+  .badge-body{padding:2mm 3mm 2.2mm 3mm;flex:1;display:flex;flex-direction:column;}
   .badge-stats{display:flex;gap:2.4mm;margin-bottom:2.2mm;flex-wrap:nowrap;}
   .badge-stat{text-align:center;flex:1 1 0;}
   .badge-stat b{font-size:11px;font-weight:800;color:var(--navy);display:block;line-height:1;}
@@ -193,12 +195,12 @@
   .badge-stat span{font-size:6.6px;color:var(--sub);letter-spacing:.01em;display:block;margin-top:.6mm;}
   .badge-out{
     font-size:8.2px;color:var(--ink);line-height:1.5;margin-top:auto;
-    padding-top:2mm;border-top:1px dashed #e8dcc2;
+    padding-top:1.6mm;border-top:1px dashed #e8dcc2;
   }
   .badge-out b{color:var(--gold-d);font-weight:700;}
 
   /* ===================== TIMELINE / SCOPE ===================== */
-  .tl-wrap{margin-bottom:5mm;}
+  .tl-wrap{margin-bottom:2.5mm;}
   .tl-svg,.scope-svg{width:100%;display:block;}
   .scope-wrap{display:grid;grid-template-columns:1fr;gap:0;}
   .scope-note{
@@ -208,13 +210,13 @@
   .scope-note b{color:var(--navy);}
 
   /* ===================== PAGE 2 ===================== */
-  .p2-body{padding:9mm 9mm 9mm 9mm;}
-  .p2-hdr{border-bottom:2px solid var(--navy);padding-bottom:3mm;margin-bottom:6mm;display:flex;justify-content:space-between;align-items:flex-end;}
+  .p2-body{padding:7mm 8mm 6mm 8mm;}
+  .p2-hdr{border-bottom:2px solid var(--navy);padding-bottom:2.4mm;margin-bottom:4mm;display:flex;justify-content:space-between;align-items:flex-end;}
   .p2-hdr h1{font-size:15px;color:var(--navy);margin:0;font-weight:700;letter-spacing:.05em;}
   .p2-hdr span{font-size:8.6px;color:var(--sub);}
 
-  .blk{margin-bottom:6mm;}
-  .blk-h{display:flex;align-items:center;gap:2.6mm;margin-bottom:3mm;}
+  .blk{margin-bottom:4mm;}
+  .blk-h{display:flex;align-items:center;gap:2.6mm;margin-bottom:2mm;}
   .blk-h .bar{width:3px;height:13px;background:var(--gold);border-radius:2px;}
   .blk-h h2{font-size:11.5px;color:var(--navy);margin:0;font-weight:700;letter-spacing:.05em;}
 
@@ -590,28 +592,6 @@
       <p style="font-size:9.2px;line-height:1.7;color:var(--ink);margin:0;">
         通信キャリアの大規模システム開発において、統括PMO・戦略PMO・リードPMとして約16年従事。最大案件では開発予算1兆円・開発体制2,000人・期間18ヶ月のLTE全国展開を遅延ゼロで完遂。東日本大震災では災害対策本部にて書類なし開通の特例運用を1日で全国通達し二次被害ゼロを実現した。0→1の新概念導入（「利用者」概念の実装）、官民連携によるeKYCガイドライン策定など、要件の上流から運用の下流、そして制度まで見通す射程を強みとする。2023年5月より個人事業（フリーランスPMO）として稼働、現在 稼働可能。
       </p>
-    </div>
-
-    <!-- 代表案件詳細 -->
-    <div class="blk">
-      <div class="blk-h"><span class="bar"></span><h2>代表案件（詳細）</h2></div>
-      <div class="pr-grid">
-        <div class="pr-card">
-          <div class="tag">2011 ／ 統括PMO</div>
-          <h4>LTE全国展開・セールス部門統括PMO</h4>
-          <p>開発予算1兆円・体制2,000人・18ヶ月。全国サービスインを遅延ゼロで完遂。</p>
-        </div>
-        <div class="pr-card">
-          <div class="tag">2011 ／ 危機対応</div>
-          <h4>東日本大震災 災害対策本部</h4>
-          <p>書類なし開通の特例運用を1日で全国通達。二次被害ゼロを達成。</p>
-        </div>
-        <div class="pr-card">
-          <div class="tag">2021 ／ 官民連携</div>
-          <h4>eKYCガイドライン策定／IPA</h4>
-          <p>官民横断の合意形成を完遂。業界標準として普及させた。</p>
-        </div>
-      </div>
     </div>
 
     <!-- 専門知識 -->
