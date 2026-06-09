@@ -88,6 +88,7 @@ export const FOOTER_LINKS: readonly NavItem[] = [
   { href: '/projects/', label: '実績・ケーススタディ' },
   { href: '/career/', label: '職務経歴' },
   { href: '/about/', label: 'About' },
+  { href: '/privacy/', label: 'プライバシーポリシー' },
 ];
 
 export type Stat = { value: string; label: string };
